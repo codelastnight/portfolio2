@@ -1,17 +1,13 @@
 ---
 // Component Imports
-import BaseHead from "../components/BaseHead.astro";
-import BlogHeader from "../components/BlogHeader.astro";
-import BlogPostPreview from "../components/BlogPostPreview.astro";
 import { SITE } from "../config";
-
+import BaseHead from "../components/BaseHead.astro";
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
 // It will run during the build, but never in the browser.
 // All variables are available to use in the HTML template below.
 let { title } = SITE;
 let description = "The perfect starter for your perfect blog.";
-let permalink = "https://example.com/";
 
 // Data Fetching: List all Markdown posts in the repo.
 
@@ -28,7 +24,7 @@ allPosts = allPosts.sort(
 
 <html lang='en'>
   <head>
-    <BaseHead {title} {description} {permalink} />
+    <BaseHead {title} {description}  />
 
     <style>
       header {
@@ -71,7 +67,6 @@ allPosts = allPosts.sort(
   </head>
 
   <body>
-    <BlogHeader />
     <div class='wrapper'>
       <main class='content'>
         <section class='intro'>
