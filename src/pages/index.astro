@@ -3,19 +3,21 @@ import { SITE } from "../config";
 import BaseHead from "../components/BaseHead.astro";
 import { Debug } from "astro:components";
 import { getCollection } from 'astro:content';
-
+import Footer from  "../components/Footer.astro"
+import Header from "../components/Header.astro";
 let { title } = SITE;
 let description = "The perfect starter for your perfect blog.";
 
 // Data Fetching: List all Markdown posts in the repo.
 
 const allPosts = (await getCollection('work')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+	(a, b) => a.data.publishDate.valueOf() - b.data.publishDate.valueOf()
 )
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 ---
+
 
 <html lang='en'>
   <head>
@@ -31,7 +33,7 @@ const allPosts = (await getCollection('work')).sort(
         </section>
 
         <section aria-label='Blog post list'>
-          {allPosts.map((post) => (
+          {allPosts?.map((post) => (
            <p> a:
             {post.id}
             </p>
@@ -39,9 +41,6 @@ const allPosts = (await getCollection('work')).sort(
            ))}
         </section>
       </main>
-      <footer>
-        <a href='/admin'>Admin Dashboard 🔐</a>
-      </footer>
     </div>
   </body>
 </html>

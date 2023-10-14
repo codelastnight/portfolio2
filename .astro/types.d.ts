@@ -185,13 +185,34 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"work": {
+"drawaudiotoy/index.mdx": {
+	id: "drawaudiotoy/index.mdx";
+  slug: "drawaudiotoy";
+  body: string;
+  collection: "work";
+  data: InferEntrySchema<"work">
+} & { render(): Render[".mdx"] };
 "firstpost.md": {
 	id: "firstpost.md";
   slug: "firstpost";
   body: string;
   collection: "work";
-  data: any
+  data: InferEntrySchema<"work">
 } & { render(): Render[".md"] };
+"futureofwork/index.mdx": {
+	id: "futureofwork/index.mdx";
+  slug: "futureofwork";
+  body: string;
+  collection: "work";
+  data: InferEntrySchema<"work">
+} & { render(): Render[".mdx"] };
+"tamagatchi/index.mdx": {
+	id: "tamagatchi/index.mdx";
+  slug: "tamagatchi";
+  body: string;
+  collection: "work";
+  data: InferEntrySchema<"work">
+} & { render(): Render[".mdx"] };
 };
 
 	};
@@ -202,5 +223,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	type ContentConfig = never;
+	type ContentConfig = typeof import("../src/content/config");
 }
