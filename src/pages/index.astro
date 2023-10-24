@@ -21,42 +21,30 @@ const allPosts = (await getCollection("work")).sort(
 <html lang='en'>
   <head>
     <BaseHead {title} {description} />
-
-    <style lang="postcss">
-    
-      :root {
-        --c-light:  #f0ebf6;
-        --c-dark: #0500e1 ;
-      }
-      ::selection {
-        background: var(--c-dark);
-      }
-      body {
-        @apply bg-theme-light text-theme-dark;
-      }
-        
-
-    </style>
   </head>
 
   <body>
     <div class='wrapper'>
       <Header />
-
       <main class='content'>
         <MainHero />
-        <section class='intro'>
-          <h1 class='latest'>{title}</h1>
-          <p>{description}</p>
+        <section class='flex flex-col items-center px-2 mt-[20vh]'>
+          <p class='text-center max-w-sm'>
+            scroll down to see some of my selected work, or send me a message
+            via online mail. If you’re curious, check out what I'm listening to
+            right now.
+          </p>
         </section>
 
-        <section aria-label='Blog post list'>
+        <section aria-label='Blog post list' class='px-2 flex flex-col'>
           {
             allPosts?.map((post) => (
               <p>
-                {" "}
-                a:
-                {post.slug}
+                <a href={"/work/" + post.slug}>
+                  {" "}
+                  a:
+                  {post.slug}
+                </a>
               </p>
             ))
           }

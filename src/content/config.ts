@@ -8,7 +8,7 @@ const work = defineCollection({
     // Transform string to Date object
     publishDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
-    heroImage: z.string().optional(),
+    heroImage: z.string(),
     tags: z.array(z.string()).optional(),
   }),
 });

@@ -4,6 +4,7 @@ publishDate: 16 May 2022
 author: Chris Swithinbank
 authorURL: https://twitter.com/swithinbank
 description: How to get started using Netlify CMS to manage your Astro site’s content
+heroImage: ""
 layout: ../../layouts/BlogPost.astro
 ---
 

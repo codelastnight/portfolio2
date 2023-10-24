@@ -6,7 +6,6 @@ interface Props {
   description: string;
   image?: string;
 }
-
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
@@ -26,12 +25,22 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
   type='font/woff'
   crossorigin
 />
-<style>
+<style is:global>
   @font-face {
     font-family: "Neue Montreal";
     src: local("PP Neue Montreal"), local("Neue Montreal"),
       url("/assets/PPNeueMontreal-Medium.woff2");
     font-display: swap;
+  }
+  :root {
+    --c-light: #f0ebf6;
+    --c-dark: #0500e1;
+  }
+  ::selection {
+    background: var(--c-dark);
+  }
+  body {
+    @apply bg-theme-light text-theme-dark;
   }
 </style>
 <!-- Canonical URL -->
