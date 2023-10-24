@@ -1,1 +1,19 @@
-header
+<header>
+  <div>
+    <a href='#'>work</a>
+    <a href='#'>play</a>
+  </div>
+  <div>
+    <a href='#'>contact</a>
+    <a href='#'>about</a>
+  </div>
+</header>
+
+<style lang="postcss">
+    header {
+        @apply sticky px-3 py-3 top-0 flex justify-between;
+    }
+    header>div {
+      @apply flex gap-6;
+    }
+</style>

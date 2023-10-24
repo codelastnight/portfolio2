@@ -1,0 +1,108 @@
+---
+interface Props {
+  width?: string;
+  height?: string;
+  radius?: string;
+  id?: string;
+  color?: string;
+  class?: string;
+}
+const {
+  id = "",
+  width = "4rem ",
+  height = "2rem",
+  radius = "3rem",
+  color = "rgb(236, 204, 254)",
+  class: astroClass = "",
+} = Astro.props;
+---
+
+<button
+  id={id}
+  class=`shinybutton transition ${astroClass}`
+  style=`width:${width}; height: ${height}; border-radius: ${radius}; --btn-color: ${color}`
+  type='button'
+>
+  <p class='text'>
+    <slot />
+  </p>
+</button>
+<style>
+  .shinybutton {
+    all: unset;
+    overflow: hidden;
+    position: relative;
+    //--btn-color: rgb(236, 204, 254);
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 65%,
+        rgba(255, 255, 255, 0.8) 100%
+      ),
+      var(--btn-color);
+    outline: 2px solid var(--btn-color);
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    transition: all 150ms cubic-bezier(0.08, 1.07, 0.17, 1.74);
+  }
+  /* color burn inner shadow */
+  .shinybutton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    mix-blend-mode: color-burn;
+    box-shadow: inset 0px 0rem 0.5rem rgba(0, 0, 0, 0.25);
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+  }
+  /*highlight*/
+  .shinybutton::after {
+    content: "";
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 1) 50%,
+        rgba(255, 255, 255, 0) 100%
+      ),
+      rgba(255, 255, 255, 0.3);
+
+    position: absolute;
+    top: -50%;
+    left: 0;
+    opacity: 0.8;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+  }
+
+  .shinybutton:hover,
+  .shinybutton:focus-visible {
+    filter: drop-shadow(0px 0px 0.2rem var(--btn-color));
+    transform: scale(102%);
+  }
+  .shinybutton:focus {
+    outline-width: 4px;
+  }
+
+  .shinybutton:active .text {
+    transform: translateY(0.2rem);
+  }
+  .shinybutton:active.shinybutton::after {
+    transform: translateY(0.2rem);
+    opacity: 1;
+  }
+  .shinybutton:active.shinybutton::before {
+    box-shadow: inset 0px 0.5rem 2em rgba(0, 0, 0, 0.25);
+  }
+
+  // text
+  .text {
+    text-align: center;
+    padding: 0rem 1em;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0;
+    width: 100%;
+  }
+</style>

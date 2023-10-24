@@ -1,34 +1,16 @@
-![Astro + Netlify CMS](https://raw.githubusercontent.com/delucis/astro-netlify-cms/HEAD/header.png)
+## my portfolio 2: faster-er, flatter-er, and lighter-er
 
-<h1 align="center">Astro Blog Starter with Netlify CMS</h1>
+turns out i didnt need a CMS (i hate gatsby!!!) an d also netlify-cms depreciated like last year (wtf???) so im just ballin it with just `.mdx` and `astrojs` now.
 
-This example is based on [the basic Astro blog starter kit][starter], and
-adds [the Astro Netlify CMS integration][integration].
+also, do i realllly need a cdn? probably not??? (unsure.. lets figure this out later...)
 
-## Quick deploy
+### to dev
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)][deploy]
+```
+pnpm install
+pnpm run dev
+```
 
-☝️ Click this button to copy this project to your own GitHub (or GitLab)
-account and set up continuous deployment with Netlify as if by magic. ✨
+### License
 
-Once you’ve got the project set up, you do need to
-[activate Netlify Identity in the Netlify UI][identity] and then enable
-[“Git Gateway”][gateway] to allow e-mail/password authentication.
-
-## Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command           | Action                                             |
-| :---------------- | :------------------------------------------------- |
-| `npm install`     | Installs dependencies                              |
-| `npm run dev`     | Starts local dev & Netlify CMS proxy servers       |
-| `npm run build`   | Build your production site to `./dist/`            |
-| `npm run preview` | Serve `./dist/` & run the Netlify CMS proxy server |
-
-[starter]: https://astro.new/blog?on=github
-[integration]: https://github.com/delucis/astro-netlify-cms
-[deploy]: https://app.netlify.com/start/deploy?repository=https://github.com/delucis/astro-netlify-cms-starter
-[identity]: https://docs.netlify.com/visitor-access/identity/
-[gateway]: https://docs.netlify.com/visitor-access/git-gateway/
+this repository has a limited copyrighted license, where my work is copyrighted but the code powering the website is available under certain conditions. see license for more detail

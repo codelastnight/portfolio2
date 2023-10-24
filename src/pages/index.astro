@@ -1,46 +1,68 @@
 ---
 import { SITE } from "../config";
 import BaseHead from "../components/BaseHead.astro";
-import { Debug } from "astro:components";
-import { getCollection } from 'astro:content';
-import Footer from  "../components/Footer.astro"
+import { getCollection } from "astro:content";
+import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import MainHero from "../components/MainHero.astro";
 let { title } = SITE;
 let description = "The perfect starter for your perfect blog.";
 
 // Data Fetching: List all Markdown posts in the repo.
 
-const allPosts = (await getCollection('work')).sort(
-	(a, b) => a.data.publishDate.valueOf() - b.data.publishDate.valueOf()
-)
+const allPosts = (await getCollection("work")).sort(
+  (a, b) => a.data.publishDate.valueOf() - b.data.publishDate.valueOf()
+);
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 ---
 
-
 <html lang='en'>
   <head>
-    <BaseHead {title} {description}  />
+    <BaseHead {title} {description} />
+
+    <style lang="postcss">
+    
+      :root {
+        --c-light:  #f0ebf6;
+        --c-dark: #0500e1 ;
+      }
+      ::selection {
+        background: var(--c-dark);
+      }
+      body {
+        @apply bg-theme-light text-theme-dark;
+      }
+        
+
+    </style>
   </head>
 
   <body>
     <div class='wrapper'>
+      <Header />
+
       <main class='content'>
+        <MainHero />
         <section class='intro'>
           <h1 class='latest'>{title}</h1>
           <p>{description}</p>
         </section>
 
         <section aria-label='Blog post list'>
-          {allPosts?.map((post) => (
-           <p> a:
-            {post.id}
-            </p>
-          
-           ))}
+          {
+            allPosts?.map((post) => (
+              <p>
+                {" "}
+                a:
+                {post.slug}
+              </p>
+            ))
+          }
         </section>
       </main>
+      <Footer />
     </div>
   </body>
 </html>
