@@ -1,19 +1,28 @@
-<header>
+---
+import { ANCHORTAGS } from "../config";
+---
+
+<nav>
   <div>
-    <a href='#'>work</a>
+    <a href=`/#${ANCHORTAGS.work}`>work</a>
     <a href='#'>play</a>
   </div>
   <div>
     <a href='#'>contact</a>
     <a href='#'>about</a>
   </div>
-</header>
+</nav>
 
 <style lang="postcss">
-    header {
+    nav {
         @apply sticky px-3 py-3 top-0 flex justify-between;
+        @apply z-50;
     }
-    header>div {
+    nav>div {
       @apply flex gap-6;
+    }
+    nav a {
+      @apply inline px-2 py-1 -mx-2 -my-1;
+      
     }
 </style>

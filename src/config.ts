@@ -1,3 +1,9 @@
 export const SITE = {
-  title: 'Astro Blog with Netlify CMS',
+  title: "Simon Zhang Design",
+};
+
+export const ANCHORTAGS = {
+  mainContent: "main",
+  topOfPage: "top",
+  work: "work",
 };

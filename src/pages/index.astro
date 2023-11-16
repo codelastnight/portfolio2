@@ -1,56 +1,51 @@
 ---
-import { SITE } from "../config";
-import BaseHead from "../components/BaseHead.astro";
 import { getCollection } from "astro:content";
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+
 import MainHero from "../components/MainHero.astro";
-let { title } = SITE;
-let description = "The perfect starter for your perfect blog.";
+import WorkPreview from "../components/workPreview.astro";
 
 // Data Fetching: List all Markdown posts in the repo.
 
-const allPosts = (await getCollection("work")).sort(
-  (a, b) => a.data.publishDate.valueOf() - b.data.publishDate.valueOf()
-);
+const allPosts = (
+  await getCollection("work", ({ data }) => {
+    return data.archive !== true;
+  })
+).sort((a, b) => a.data.publishDate.valueOf() - b.data.publishDate.valueOf());
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 ---
 
-<html lang='en'>
-  <head>
-    <BaseHead {title} {description} />
-  </head>
+<Layout>
+  <MainHero />
+  <section class='flex flex-col items-center px-2 mt-[20vh]'>
+    <p class='text-center max-w-sm'>
+      scroll down to see some of my selected work, or send me a message via
+      online mail. If you’re curious, check out what I'm listening to right now.
+    </p>
+  </section>
 
-  <body>
-    <div class='wrapper'>
-      <Header />
-      <main class='content'>
-        <MainHero />
-        <section class='flex flex-col items-center px-2 mt-[20vh]'>
-          <p class='text-center max-w-sm'>
-            scroll down to see some of my selected work, or send me a message
-            via online mail. If you’re curious, check out what I'm listening to
-            right now.
-          </p>
-        </section>
-
-        <section aria-label='Blog post list' class='px-2 flex flex-col'>
-          {
-            allPosts?.map((post) => (
-              <p>
-                <a href={"/work/" + post.slug}>
-                  {" "}
-                  a:
-                  {post.slug}
-                </a>
-              </p>
-            ))
-          }
-        </section>
-      </main>
-      <Footer />
+  <section
+    aria-label='Blog post list'
+    class='flex flex-col items-center mt-12'
+    id='work'
+  >
+    {allPosts?.map((post, index) => <WorkPreview {post} {index} />)}
+  </section>
+  <section class='px-2 my-10'>
+    <p class='text-2xl indent-11 max-w-prose'>
+      simon zhang is a cross-disciplinary designer based in ATL & SEA —
+      netscape-oriented with a windows aero slant. creating intimacy between
+      physical and digital products.
+    </p>
+    <div class='grid grid-cols-2 gap-y-2 gap-x-1 mt-6'>
+      <p>
+        Listening To: <br /> Five Years of Work and We Built That Song by
+        Newfound Interest in Connecticut
+      </p>
+      <p>Reading right now: <br />CAPS LOCK by Ruben Pater</p>
+      <p>See how this site was built 👀<br /> Source Code on Github</p>
     </div>
-  </body>
-</html>
+  </section>
+</Layout>

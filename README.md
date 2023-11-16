@@ -13,4 +13,4 @@ pnpm run dev
 
 ### License
 
-this repository has a limited copyrighted license, where my work is copyrighted but the code powering the website is available under certain conditions. see license for more detail
+this repository has a limited copyrighted license, where my personal work is copyrighted but the code powering the website is available under certain conditions. see license for more detail.

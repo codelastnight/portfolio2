@@ -1,0 +1,59 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"work">;
+  index: number;
+}
+const { post, index } = Astro.props;
+const spacing = 12
+const img1 = post.data.heroImages[0]
+const img2 = post.data.heroImages.length >= 2  ? post.data.heroImages[0] : undefined
+const fullWidth = img1.width + (img2 ? img2.width  + spacing : 0)
+---
+
+<article class='w-full px-2 py-4'>
+  <header>
+    <h2 class='text-center pb-2'>
+      <span class='block'>Case Study {index}:</span>
+      <span class='block text-2xl'>{post.data.title}</span>
+    </h2>
+  </header>
+  <div class='w-full img-preview flex flex-col lg:flex-row justify-between gap-y-1'>
+    <img
+      src={img1.src}
+      alt='test'
+      height={img1.height}
+      width={img1.width}
+      style=`aspect-ratio:${img1.width} / ${img1.height}; --img-preview-width: ${(img1.width/fullWidth)*100}%`
+    />
+    {
+      img2 && (
+        <img
+          src={img2.src}
+          alt='test'
+          height={img2.height}
+          width={img2.width}
+          style=`aspect-ratio: ${img1.width} / ${img1.height};  --img-preview-width: ${(img2.width/fullWidth)*100}%`
+        />
+      )
+    }
+  </div>
+  <footer class='flex justify-between mt-2 flex-col md:flex-row gap-2'>
+    <p class='max-w-xl'>{post.data.description}</p>
+    <p>
+      <a href=`/work/${post.slug}`>
+        Full Case Study: {post.data.title}
+      </a>
+    </p>
+  </footer>
+</article>
+
+<style lang="postcss">
+  .img-preview img{
+    --img-preview-width: 100%;
+    height: auto; 
+    @apply w-full lg:w-[var(--img-preview-width)];
+  }
+  
+</style>

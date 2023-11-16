@@ -4,7 +4,7 @@ import ShinyButton from "./ShinyButton.astro";
 
 <section class='flex flex-col items-center'>
   <svg
-    class='my-3'
+    class='my-3 lg:hidden'
     height='2rem'
     viewBox='0 0 26 25'
     xmlns='http://www.w3.org/2000/svg'
@@ -15,22 +15,47 @@ import ShinyButton from "./ShinyButton.astro";
   </svg>
 
   <h1 class='mainheading text-center'>
-    <span class='whitespace-nowrap'>Simon Zhang</span>
-    <span> is</span>
-    <span class='-mr-10 lg:hidden z-10 relative'>®</span>
-    <span class='leading-[0] align-middle mx-4'>
-      <ShinyButton color='#FFA3F0' width='2.5em' height='0.6em' radius='0' />
+    <span class='lg:whitespace-nowrap'>
+      <span class='whitespace-nowrap'>Simon Zhang</span>
+      <span> is</span>
+      <span class='-mr-7 md:-mr-10 lg:-mr-12 z-10 relative' aria-hidden='true'
+        >®</span
+      >
+      <span
+        class='leading-[0] align-middle mx-4 relative inline-flex'
+        aria-hidden='true'
+      >
+        <span class='inline-block absolute z-10 -top-[0.2em]'>
+          <svg
+            width='100%'
+            height='100%'
+            viewBox='0 0 143 56'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='M16.2693 36.3357C25.3715 32.3248 34.5239 28.6544 43.2992 24.0252C58.9665 15.7603 74.4922 8.5141 92.1452 4.58554C101.529 2.49732 113.179 0.170827 122.583 2.48846C125.202 3.13387 130.863 5.83366 131.474 8.54827C132.956 15.1353 119.89 20.3996 115.372 22.7249C91.5007 35.0122 66.4594 45.0683 39.9682 51.2711C33.4086 52.807 28.3063 53.8675 21.7437 54.5441C19.2343 54.8028 14.3437 55.4673 11.979 53.8509C9.17874 51.9368 10.0054 46.7335 11.4936 44.3225C14.6031 39.285 20.9676 34.8395 26.4095 31.9517C41.3374 24.0299 58.5381 17.6382 74.83 12.7055C91.564 7.63882 109.033 4.54806 126.471 4.89998C127.451 4.91975 141.693 4.88981 142.052 6.96948C142.162 7.60741 140.715 8.90997 140.551 9.05478C136.533 12.5954 131.65 15.655 126.984 18.4246C106.447 30.6142 82.9159 39.5018 59.272 44.8888C45.872 47.9418 31.0817 50.2626 17.3648 49.5272C12.0037 49.2397 6.74581 47.691 1.60694 46.5739'
+              stroke='currentColor'
+              stroke-width='1.5'
+              stroke-linecap='round'></path>
+          </svg>
+        </span>
+        <ShinyButton color='#FFA3F0' width='2.4em' height='0.6em' radius='0' />
+      </span>
+      <span class='-ml-4'> just</span>
     </span>
-    <span>just</span>
 
     <span class='relative inline-block'>
-      <span class='block absolute top-[30%] -left-[15%] -z-10'>
+      <span
+        class='block absolute top-[30%] -left-[15%] -z-10 aria-hidden="true"'
+      >
         <ShinyButton color='#D4BAFF' width='1em' height='2.2em' radius='3em' />
       </span>
-
        practicing
     </span>
-    <span class='relative inline-block'>
+
+    <span class='relative inline'>
+      design
       <span aria-hidden='true' class='absolute -bottom-[0.1em] -right-[0.7em]'>
         <svg
           width='0.5em'
@@ -45,8 +70,9 @@ import ShinyButton from "./ShinyButton.astro";
             stroke-linecap='round'></path>
         </svg>
       </span>
-       design
-      <span class='block absolute bottom-0 -right-[40%] -z-10'>
+      <span
+        class='block absolute bottom-0 lg:bottom-[-0.7em] -right-[40%] lg:-right-[20%] -z-10'
+      >
         <ShinyButton
           color='#83E787'
           width='1.5em'
@@ -73,7 +99,7 @@ import ShinyButton from "./ShinyButton.astro";
       stroke-linecap='round'></path>
   </svg>
 
-  <p class='max-w-xs text-center my-10'>
+  <p class='max-w-xs text-center mt-6 mb-10'>
     (creating intimacy between digital and physical products)
   </p>
   <svg

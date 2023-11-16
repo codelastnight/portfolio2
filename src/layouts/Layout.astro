@@ -1,0 +1,25 @@
+---
+import { SITE, ANCHORTAGS } from "../config";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
+let { title } = SITE;
+let description = "Simon Zhang is just practicing design";
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+
+<html lang='en'>
+  <head>
+    <BaseHead {title} {description} />
+  </head>
+
+  <body id={ANCHORTAGS.topOfPage}>
+    <Nav />
+    <main id={ANCHORTAGS.mainContent}>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
