@@ -1,15 +1,17 @@
 ---
 import { ANCHORTAGS } from "../config";
+
+const isHome = Astro.url.pathname === "/";
 ---
 
 <nav>
   <div>
-    <a href=`/#${ANCHORTAGS.work}`>work</a>
-    <a href='#'>play</a>
+    <a href=`/${isHome ? '#' + ANCHORTAGS.work : ''}`>work</a>
+    <a href='/play'>play</a>
   </div>
   <div>
     <a href='#'>contact</a>
-    <a href='#'>about</a>
+    <a href='/#about'>about</a>
   </div>
 </nav>
 

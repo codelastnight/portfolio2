@@ -8,5 +8,6 @@ export default defineConfig({
   // image: {
   //   service: passthroughImageService(),
   // },
-  integrations: [mdx(), tailwind()]
+  integrations: [mdx(), tailwind()],
+
 });

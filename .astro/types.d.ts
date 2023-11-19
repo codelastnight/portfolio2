@@ -192,13 +192,6 @@ declare module 'astro:content' {
   collection: "work";
   data: InferEntrySchema<"work">
 } & { render(): Render[".mdx"] };
-"firstpost.md": {
-	id: "firstpost.md";
-  slug: "firstpost";
-  body: string;
-  collection: "work";
-  data: InferEntrySchema<"work">
-} & { render(): Render[".md"] };
 "futureofwork/index.mdx": {
 	id: "futureofwork/index.mdx";
   slug: "futureofwork";

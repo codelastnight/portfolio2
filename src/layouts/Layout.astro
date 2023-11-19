@@ -1,25 +1,66 @@
 ---
-import { SITE, ANCHORTAGS } from "../config";
-import BaseHead from "../components/BaseHead.astro";
+import { ANCHORTAGS } from "../config";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
-let { title } = SITE;
-let description = "Simon Zhang is just practicing design";
-
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
+
+interface Props {
+  colors?: {
+    fg?: string;
+    bg?: string;
+  };
+}
+
+const { colors } = Astro.props;
+const colorsStyles = colors
+  ? `--c-light: ${colors.bg};  ${colors.fg ? "--c-dark: " + colors.fg : ""}`
+  : "";
+  
+
+const anim = {
+  old: {
+    name: 'slideOut',
+    duration: '10s',
+    easing: 'ease-in',
+    fillMode: 'forwards',
+  },
+  new: {
+    name: 'slideOut',
+    duration: '10s',
+    easing: 'ease-out',
+    fillMode: 'backwards',
+  }
+};
+
+const myFade = {
+  forwards: anim,
+  backwards: anim,
+};
 ---
 
-<html lang='en'>
+<html lang='en' >
   <head>
-    <BaseHead {title} {description} />
-  </head>
+    <style :global>
+      @keyframe slideOut {
+        from {
+          transform: translateY(-400px);
 
-  <body id={ANCHORTAGS.topOfPage}>
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+    </style>
+    <head>
+  <body id={ANCHORTAGS.topOfPage} style={colorsStyles}  >
     <Nav />
     <main id={ANCHORTAGS.mainContent}>
       <slot />
     </main>
     <Footer />
   </body>
+  
 </html>
+
+

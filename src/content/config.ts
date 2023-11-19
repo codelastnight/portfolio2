@@ -21,10 +21,13 @@ const work = defineCollection({
       archive: z.boolean().optional(),
       colors: z
         .object({
-          bg: z.string(),
-          fg: z.string(),
+          bg: z.string().default("#fff"),
+          fg: z.string().default("#000"),
         })
-        .optional(),
+        .default({
+          bg: "#fff",
+          fg: "#000",
+        }),
     }),
 });
 

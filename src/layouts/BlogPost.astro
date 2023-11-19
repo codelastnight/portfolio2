@@ -1,27 +1,67 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
+import { ANCHORTAGS } from "../config";
+import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
+import {slide} from "astro:transitions"
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
 
-const { content } = Astro.props;
-const {
-  title,
-  description,
-  publishDate,
-  author,
-  authorURL,
-  heroImage,
-  permalink,
-  alt,
-} = content;
+interface Props {
+  colors?: {
+    fg?: string;
+    bg?: string;
+  };
+}
+
+const { colors } = Astro.props;
+const colorsStyles = colors
+  ? `--c-light: ${colors.bg};  ${colors.fg ? "--c-dark: " + colors.fg : ""}`
+  : "";
+  
+
+  const anim = {
+  old: {
+    name: 'slideOut',
+    duration: '10s',
+    easing: 'ease-in',
+    fillMode: 'forwards',
+  },
+  new: {
+    name: 'slideOut',
+    duration: '10s',
+    easing: 'ease-out',
+    fillMode: 'backwards',
+  }
+};
+
+const myFade = {
+  forwards: anim,
+  backwards: anim,
+};
 ---
 
-<html lang={content.lang || "en"}>
+<html lang='en'  transition:animate={slide({duration:'0.6s'})}>
   <head>
-    <BaseHead {title} {description} />
-  </head>
+    <style :global>
+      @keyframe slideOut {
+        from {
+          transform: translateY(20rem);
 
-  <body>
-    <div class='wrapper'>
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+    </style>
+    <head>
+  <body id={ANCHORTAGS.topOfPage} style={colorsStyles}  >
+    <Nav />
+    <main id={ANCHORTAGS.mainContent}>
       <slot />
-    </div>
+    </main>
+    <Footer />
   </body>
+  
 </html>
+
+

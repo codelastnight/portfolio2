@@ -31,14 +31,13 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
     src: local("PP Neue Montreal"), local("Neue Montreal"),
       url("/assets/PPNeueMontreal-Medium.woff2");
     font-display: swap;
+    
   }
   :root {
     --c-light: #f0ebf6;
     --c-dark: #0500e1;
   }
-  ::selection {
-    background: var(--c-dark);
-  }
+
   html {
     scroll-behavior: smooth;
   }

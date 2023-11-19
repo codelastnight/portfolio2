@@ -1,0 +1,52 @@
+---
+
+interface Props {
+  images: {
+    width?: number
+    height?: number
+    src?: string
+    format?: any
+}[]
+  alt?: string[],
+  slug?: string
+}
+
+const {slug, images,alt } = Astro.props;
+const spacing = 16
+const img1 = images[0]
+const img2 = images.length >= 2  ? images[0] : undefined
+const fullWidth = img1.width + (img2 ? img2.width  + spacing : 0)
+
+---
+
+
+  <div class='w-full img-preview flex flex-col lg:flex-row justify-between gap-y-1' transition:name={"images:"+slug}  >
+    <img
+      src={img1.src}
+      alt={alt && alt[0]}
+      height={img1.height}
+      width={img1.width}
+      style=`aspect-ratio:${img1.width} / ${img1.height}; --img-preview-width: ${(img1.width/fullWidth)*100}%`
+    />
+    {
+      img2 && (
+        <img
+          src={img2.src}
+          alt={alt && alt.length >=2 && alt[1]}
+          height={img2.height}
+          width={img2.width}
+          style=`aspect-ratio: ${img1.width} / ${img1.height};  --img-preview-width: ${(img2.width/fullWidth)*100}%`
+        />
+      )
+    }
+  </div>
+
+
+<style lang="postcss">
+  .img-preview img{
+    --img-preview-width: 100%;
+    height: auto; 
+    @apply w-full lg:w-[var(--img-preview-width)];
+  }
+  
+</style>
