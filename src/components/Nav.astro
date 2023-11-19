@@ -4,13 +4,13 @@ import { ANCHORTAGS } from "../config";
 const isHome = Astro.url.pathname === "/";
 ---
 
-<nav>
+<nav transition:name="nav">
   <div>
     <a href=`/${isHome ? '#' + ANCHORTAGS.work : ''}`>work</a>
     <a href='/play'>play</a>
   </div>
   <div>
-    <a href='#'>contact</a>
+    <button data-contact class="psuedo-link">contact</button>
     <a href='/#about'>about</a>
   </div>
 </nav>
@@ -26,5 +26,10 @@ const isHome = Astro.url.pathname === "/";
     nav a {
       @apply inline px-2 py-1 -mx-2 -my-1;
       
+    }
+    .psuedo-link {
+      @apply bg-theme-light text-theme-dark;
+      @apply underline inline px-2 py-1 -mx-2 -my-1;;
+      @apply hover:bg-theme-dark hover:text-theme-light;
     }
 </style>
