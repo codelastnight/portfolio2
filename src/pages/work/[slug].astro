@@ -5,7 +5,7 @@ import ImageRow from "../../components/ImageRow.astro";
 import { ViewTransitions } from "astro:transitions";
 import { SITE } from "../../config";
 import BaseHead from "../../components/BaseHead.astro";
-import BlogPost from '../../layouts/BlogPost.astro'
+import BlogPost from "../../layouts/BlogPost.astro";
 // // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const blogEntries = await getCollection("work");
@@ -29,20 +29,27 @@ const description = entry.data.description;
 ---
 
 <head>
-  <ViewTransitions fallback="none"  />
+  <ViewTransitions fallback='none' />
   <BaseHead {title} {description} />
 </head>
 <Layout colors={entry.data.colors}>
   <header class='px-2 mb-4'>
-    <h1 class='text-6xl lg:text-8xl text-center mt-2 mb-4' transition:name={"title:"+entry.slug}>
+    <h1
+      class='text-6xl lg:text-8xl text-center mt-2 mb-4'
+      transition:name={"title:" + entry.slug}
+    >
       {entry.data.title}
     </h1>
-    <ImageRow slug={entry.slug} images={entry.data.heroImages} alt={entry.data.heroImagesAlt} />
+    <ImageRow
+      slug={entry.slug}
+      images={entry.data.heroImages}
+      alt={entry.data.heroImagesAlt}
+    />
   </header>
 
-  <article class='px-2 max-w-prose mx-auto my-3'>
-    <section class='text-xl'>
-      <p class='text-xl'>
+  <article class='px-2 max-w-prose mx-auto my-3 mt-12'>
+    <section class='text-xl my-6'>
+      <p class='text-3xl'>
         {entry.data.description}
       </p>
     </section>

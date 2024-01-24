@@ -17,9 +17,8 @@ import ShinyButton from "./ShinyButton.astro";
   <h1 class='mainheading text-center'>
     <span class='lg:whitespace-nowrap'>
       <span class='whitespace-nowrap'>Simon Zhang</span>
-      <span> is</span>
-      <span class='-mr-7 md:-mr-10 lg:-mr-12 z-10 relative' aria-hidden='true'
-        >®</span
+      <span class='inline-block -mr-7 md:-mr-10 lg:-mr-12 z-10 relative' 
+        > is®</span
       >
       <span
         class='leading-[0] align-middle mx-4 relative inline-flex'
@@ -122,8 +121,8 @@ import ShinyButton from "./ShinyButton.astro";
         @apply px-3;
     }
     .mainheading {
-        font-size: 14vmin;
-        @apply leading-[1.1] ;
+        font-size: 15vmin;
+        @apply leading-[1.1] lg:text-[14vmin] ;
         max-width: 100vw;
     }
 </style>
