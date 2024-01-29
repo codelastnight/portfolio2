@@ -1,44 +1,39 @@
 ---
-
-interface Props {
-  images: {
+interface image {
     width?: number
     height?: number
     src?: string
     format?: any
-}[]
+}
+
+interface Props {
+  images: {[key:string]: image}
   alt?: string[],
   slug?: string
 }
 
-const {slug, images,alt } = Astro.props;
+const {slug, images } = Astro.props;
 const spacing = 16
-const img1 = images[0]
-const img2 = images.length >= 2  ? images[1] : undefined
-const fullWidth = img1.width + (img2 ? img2.width  + spacing : 0)
-
+const fullWidth = Object.entries(images).reduce(
+  (accumulator, currentImage, index) => {
+    const addSpace = index !== 0 ? spacing : 0;
+    return accumulator + currentImage[1].width + addSpace
+  }
+    ,
+  0,
+);
 ---
 
 
   <div class='w-full img-preview flex flex-col lg:flex-row justify-between gap-y-1' transition:name={"images:"+slug}  >
-    <img
-      src={img1.src}
-      alt={alt && alt[0]}
-      height={img1.height}
-      width={img1.width}
-      style=`aspect-ratio:${img1.width} / ${img1.height}; --img-preview-width: ${(img1.width/fullWidth)*100}%`
-    />
-    {
-      img2 && (
-        <img
-          src={img2.src}
-          alt={alt && alt.length >=2 && alt[1]}
-          height={img2.height}
-          width={img2.width}
-          style=`aspect-ratio: ${img2.width} / ${img2.height};  --img-preview-width: ${(img2.width/fullWidth)*100}%`
-        />
-      )
-    }
+    {Object.entries(images).map((img)=> 
+      <img
+      src={img[1].src}
+      alt={img[0]}
+      height={img[1].height}
+      width={img[1].width}
+      style=`aspect-ratio:${img[1].width} / ${img[1].height}; --img-preview-width: ${(img[1].width/fullWidth)*100}%`
+    />)}
   </div>
 
 

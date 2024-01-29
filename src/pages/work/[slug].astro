@@ -26,6 +26,7 @@ const allPosts = (
 const title = entry.data.title + ", " + SITE.title;
 const description = entry.data.description;
 const credits = entry.data.credits ? entry.data.credits : null;
+console.log(entry.data.heroImages);
 ---
 
 <head>
@@ -40,11 +41,7 @@ const credits = entry.data.credits ? entry.data.credits : null;
     >
       {entry.data.title}
     </h1>
-    <ImageRow
-      slug={entry.slug}
-      images={entry.data.heroImages}
-      alt={entry.data.heroImagesAlt}
-    />
+    <ImageRow slug={entry.slug} images={entry.data.heroImages} />
   </header>
 
   <article class='px-2 max-w-prose mx-auto my-3 mt-12'>

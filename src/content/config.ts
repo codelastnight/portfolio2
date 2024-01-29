@@ -10,14 +10,15 @@ const work = defineCollection({
       publishDate: z.coerce.date(),
       updatedDate: z.coerce.date().optional(),
       credits: z.record(z.string(), z.string()).optional(),
+      // lol this is a rly funny way to do things
       heroImages: z
-        .array(
+        .record(
+          z.string(),
           image().refine((img) => img.width >= 200, {
-            message: "Cover image must be at least 1080 pixels wide!",
+            message: "Cover image gotta be 300 pixels wide you goober",
           })
         )
         .optional(),
-      heroImagesAlt: z.array(z.string()).optional(),
       tags: z.array(z.string()).optional(),
       archive: z.boolean().optional(),
       colors: z
