@@ -44,9 +44,9 @@ const allPosts = (
     {allPosts?.map((post, index) => 
     <article class='w-full px-2 pt-4 pb-6 bg-theme-light text-theme-dark' style=`--c-light: ${post.data.colors.bg}; --c-dark: ${post.data.colors.fg} `  >
   <header>
-    <h2 class='text-center pb-2'>
+    <h2 class='text-center pb-4'>
       <span class='block'>Case Study {index}:</span>
-      <span class='block text-2xl' transition:name={"title:"+post.slug}>{post.data.title}</span>
+      <span class='block text-5xl' transition:name={"title:"+post.slug}>{post.data.title}</span>
     </h2>
   </header>
   <ImageRow images={post.data.heroImages} alt={post.data.heroImagesAlt} slug={post.slug} />
@@ -71,8 +71,8 @@ const allPosts = (
         Listening To: <br /> Five Years of Work and We Built That Song by
         Newfound Interest in Connecticut
       </p>
-      <p>Reading right now: <br />CAPS LOCK by Ruben Pater</p>
-      <p>See how this site was built 👀<br /> Source Code on Github</p>
+      <p>Reading right now: <br />CAPS LOCK by Ruben Pater</p>  
+      <p>See how this site was built 👀<br /> <a href="https://github.com/codelastnight/portfolio2">Source Code on Github</a></p>
     </div>
   </section>
 </Layout>

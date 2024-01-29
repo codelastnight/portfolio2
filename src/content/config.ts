@@ -9,6 +9,7 @@ const work = defineCollection({
       // Transform string to Date object
       publishDate: z.coerce.date(),
       updatedDate: z.coerce.date().optional(),
+      credits: z.record(z.string(), z.string()).optional(),
       heroImages: z
         .array(
           image().refine((img) => img.width >= 200, {
