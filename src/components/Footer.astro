@@ -2,7 +2,7 @@
 import { ANCHORTAGS } from "../config";
 ---
 
-<footer style='--c-light:; '>
+<footer style='--c-light: var(--c-bg); --c-dark: var(--c-fg); '>
   <a href=`/#${ANCHORTAGS.topOfPage}`>back to top</a>
   <svg
     width='100%'
@@ -17,12 +17,16 @@ import { ANCHORTAGS } from "../config";
       fill-rule='evenodd'></path>
   </svg>
   <div>
-    <a> website source</a>
+    <a href='https://github.com/codelastnight/portfolio2'> website source</a>
   </div>
 </footer>
 
 <style>
   footer {
     @apply bg-theme-dark text-theme-light px-2 pb-12 pt-6;
+  }
+  a {
+    --c-light: var(--c-fg);
+    --c-dark: var(--c-bg);
   }
 </style>

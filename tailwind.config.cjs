@@ -19,7 +19,7 @@ module.exports = {
 		function ({ addComponents, theme }) {
 			addComponents({
 				'a': {
-					
+
 					color: theme('colors.theme.dark'),
 					textDecoration: 'underline',
 					background: theme('colors.theme.light')

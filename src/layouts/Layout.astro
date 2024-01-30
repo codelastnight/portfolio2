@@ -14,24 +14,28 @@ interface Props {
 }
 
 const { colors } = Astro.props;
+
+//  the extra lines at the bottom is because you need to redefine variables for it take affect ..?
+// doesnt cascade it seems
 const colorsStyles = colors
-  ? `--c-light: ${colors.bg};  ${colors.fg ? "--c-dark: " + colors.fg : ""}`
+  ? `--c-bg: ${colors.bg} !important;  ${
+      colors.fg ? "--c-fg: " + colors.fg : ""
+    }` + ";--c-light: var(--c-bg); --c-dark: var(--c-fg); "
   : "";
-  
 
 const anim = {
   old: {
-    name: 'slideOut',
-    duration: '10s',
-    easing: 'ease-in',
-    fillMode: 'forwards',
+    name: "slideOut",
+    duration: "10s",
+    easing: "ease-in",
+    fillMode: "forwards",
   },
   new: {
-    name: 'slideOut',
-    duration: '10s',
-    easing: 'ease-out',
-    fillMode: 'backwards',
-  }
+    name: "slideOut",
+    duration: "10s",
+    easing: "ease-out",
+    fillMode: "backwards",
+  },
 };
 
 const myFade = {
@@ -40,29 +44,26 @@ const myFade = {
 };
 ---
 
-<html lang='en' >
+<html lang='en'>
   <head>
     <style :global>
       @keyframe slideOut {
         from {
           transform: translateY(-400px);
-
         }
         to {
           transform: translateY(0);
         }
       }
     </style>
-    <head>
-  <body id={ANCHORTAGS.topOfPage} style={colorsStyles}  >
-    <Nav />
-    <main id={ANCHORTAGS.mainContent}>
-      <slot />
-    </main>
-    <Footer />
-    <Contact />
+  </head><body id={ANCHORTAGS.topOfPage} style={colorsStyles}>
+    <div class="class='bg-light text-dark'">
+      <Nav />
+      <main id={ANCHORTAGS.mainContent}>
+        <slot />
+      </main>
+      <Footer />
+      <Contact />
+    </div>
   </body>
-  
 </html>
-
-
