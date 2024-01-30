@@ -18,9 +18,8 @@ const { colors } = Astro.props;
 //  the extra lines at the bottom is because you need to redefine variables for it take affect ..?
 // doesnt cascade it seems
 const colorsStyles = colors
-  ? `--c-bg: ${colors.bg} !important;  ${
-      colors.fg ? "--c-fg: " + colors.fg : ""
-    }` + ";--c-light: var(--c-bg); --c-dark: var(--c-fg); "
+  ? `--c-bg: ${colors.bg};  ${colors.fg ? "--c-fg: " + colors.fg : ""}` +
+    ";--c-light: var(--c-bg); --c-dark: var(--c-fg); "
   : "";
 
 const anim = {
@@ -56,14 +55,17 @@ const myFade = {
         }
       }
     </style>
-  </head><body id={ANCHORTAGS.topOfPage} style={colorsStyles}>
-    <div class="class='bg-light text-dark'">
-      <Nav />
-      <main id={ANCHORTAGS.mainContent}>
-        <slot />
-      </main>
-      <Footer />
-      <Contact />
-    </div>
+  </head>
+  <body
+    id={ANCHORTAGS.topOfPage}
+    style={colorsStyles}
+    class='bg-light text-dark'
+  >
+    <Nav />
+    <main id={ANCHORTAGS.mainContent}>
+      <slot />
+    </main>
+    <Footer />
+    <Contact />
   </body>
 </html>

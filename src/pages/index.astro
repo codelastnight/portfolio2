@@ -17,7 +17,7 @@ const allPosts = (
   await getCollection("work", ({ data }) => {
     return data.archive !== true;
   })
-).sort((a, b) => a.data.publishDate.valueOf() - b.data.publishDate.valueOf());
+).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -65,7 +65,8 @@ const allPosts = (
       <p class='text-3xl lg:text-4xl indent-[3em] max-w-2xl'>
         simon zhang is a cross-disciplinary designer based in ATL & SEA —
         netscape-oriented with a windows aero slant. creating intimacy between
-        physical and digital products.
+        physical and digital products. <span>    <button data-contact class="psuedo-link">lets connect <3</button>
+        </span>
       </p>
       <div class='grid grid-cols-2 gap-y-2 gap-x-1 mt-6 max-w-2xl'>
         <p>
@@ -83,3 +84,9 @@ const allPosts = (
     </div>
   </section>
 </Layout>
+
+<style lang="postcss">
+  .psuedo-link {
+    @apply underline hover:bg-theme-dark hover:text-theme-light;
+  }
+</style>

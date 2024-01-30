@@ -2,7 +2,9 @@
 import ShinyButton from "./ShinyButton.astro";
 ---
 
-<section class='flex flex-col items-center overflow-visible max-w-[100vw] leading-none'>
+<section
+  class='flex flex-col items-center overflow-visible max-w-[100vw] leading-none'
+>
   <svg
     class='my-3 lg:hidden'
     height='2rem'
@@ -17,8 +19,8 @@ import ShinyButton from "./ShinyButton.astro";
   <h1 class='mainheading text-center'>
     <span class='lg:whitespace-nowrap'>
       <span class='whitespace-nowrap'>Simon Zhang</span>
-      <span class='inline-block -mr-7 md:-mr-10 lg:-mr-12 z-10 relative' 
-        > is®</span
+      <span class='inline-block -mr-7 md:-mr-10 lg:-mr-12 z-10 relative'>
+        is®</span
       >
       <span
         class='leading-[0] align-middle mx-4 relative inline-flex'
@@ -50,7 +52,7 @@ import ShinyButton from "./ShinyButton.astro";
       >
         <ShinyButton color='#D4BAFF' width='1em' height='2.2em' radius='3em' />
       </span>
-       practicing
+      practicing
     </span>
 
     <span class='relative inline'>
@@ -119,6 +121,8 @@ import ShinyButton from "./ShinyButton.astro";
 <style lang="postcss">
     section {
         @apply px-3;
+        box-shadow: inset 0 0 1rem var(--c-dark);
+
     }
     .mainheading {
         font-size: 15vmin;
