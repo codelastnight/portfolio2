@@ -184,7 +184,16 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"work": {
+		"play": {
+"ess/index.mdx": {
+	id: "ess/index.mdx";
+  slug: "ess";
+  body: string;
+  collection: "play";
+  data: InferEntrySchema<"play">
+} & { render(): Render[".mdx"] };
+};
+"work": {
 "atl-wayfinding/index.mdx": {
 	id: "atl-wayfinding/index.mdx";
   slug: "atl-wayfinding";
