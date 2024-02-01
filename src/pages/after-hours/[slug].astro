@@ -1,10 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-import ImageRow from "../../components/ImageRow.astro";
 import { ViewTransitions } from "astro:transitions";
 import { SITE } from "../../config";
 import BaseHead from "../../components/BaseHead.astro";
+import { getFirst } from "./helper";
+
 // // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const blogEntries = await getCollection("play");
@@ -40,15 +41,14 @@ const credits = entry.data.credits ? entry.data.credits : null;
     >
       {entry.data.title}
     </h1>
-    <ImageRow slug={entry.slug} images={entry.data.heroImages} />
   </header>
 
-  <article class="px-2 max-w-prose mx-auto my-3 mt-12 col-2">
-    <section class="text-xl my-6">
-      <p lang="en" class="text-3xl mb-3">
+  <article class="px-3 mx-auto my-3 mt-12 col-2 md:flex gap-6 relative">
+    <section class="text-xl max-w-prose md:sticky top-3 self-start">
+      <p lang="en" class="text-lg mb-3">
         {entry.data.description}
       </p>
-      <div class="grid grid-cols-2 md:grid-cols-4 text-base gap-4">
+      <div class="grid grid-cols-2 text-base gap-4">
         {
           credits &&
             Object.entries(credits).map(([key, value]) => (
@@ -60,25 +60,36 @@ const credits = entry.data.credits ? entry.data.credits : null;
         }
       </div>
     </section>
-    <section class="prose">
+    <section class="prose grid grid-cols-1 lg:grid-cols-2 gap-x-4 gap-y-3">
+      {
+        getFirst(entry.data.heroImages, (img) => (
+          <img
+            src={img[1].src}
+            alt={img[0]}
+            height={img[1].height}
+            width={img[1].width}
+            loading="lazy"
+          />
+        ))
+      }
       <Content />
     </section>
-    <footer class="mt-8">
-      {
-        allPosts.map((post) =>
-          post.id !== entry.id ? (
-            <a class="directory" href={`/work/${post.slug}`}>
-              <p>{post.data.title}</p>
-            </a>
-          ) : (
-            <p class="directory active">
-              <span>You Are Here:</span> {post.data.title}
-            </p>
-          )
-        )
-      }
-    </footer>
   </article>
+  <footer class="mt-8">
+    {
+      allPosts.map((post) =>
+        post.id !== entry.id ? (
+          <a class="directory" href={`/work/${post.slug}`}>
+            <p>{post.data.title}</p>
+          </a>
+        ) : (
+          <p class="directory active">
+            <span>You Are Here:</span> {post.data.title}
+          </p>
+        )
+      )
+    }
+  </footer>
 </Layout>
 
 <style lang="postcss" is:global>

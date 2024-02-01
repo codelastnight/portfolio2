@@ -3,7 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import BaseHead from "../../components/BaseHead.astro";
 import { SITE, ANCHORTAGS } from "../../config";
 import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
+import { getFirst } from "./helper";
 const { title } = SITE;
 const description = "After Hours Exploration";
 
@@ -17,20 +17,6 @@ const allPosts = (
     return data.archive !== true;
   })
 ).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
-
-// lol stupid typescript to convert a record type into array form for object.entries.
-// https://stackoverflow.com/questions/60141960/typescript-key-value-relation-preserving-object-entries-type/60142095#60142095
-type Entries<T> = {
-  [K in keyof T]: [K, T[K]];
-}[keyof T];
-//lol
-type woah = CollectionEntry<"play">["data"]["heroImages"];
-
-function getFirst(obj: woah, callback: (arg: Entries<woah>) => void) {
-  const entry = Object.entries(obj)[0];
-
-  return callback(entry);
-}
 ---
 
 <head>
