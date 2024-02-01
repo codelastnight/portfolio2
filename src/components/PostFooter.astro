@@ -1,0 +1,52 @@
+---
+interface Props {
+  currentId: string;
+  collection: string;
+  postList: {
+    id: string;
+    slug: string;
+    data: {
+      title: string;
+      colors: Record<string, string>;
+    };
+  }[];
+}
+
+const { collection, postList, currentId } = Astro.props;
+
+const linkId = collection === "play" ? "after-hours" : collection;
+
+function setColors(fg, bg) {
+  return `--c-light: ${bg}; --c-dark: ${fg} `;
+}
+---
+
+<footer class="mt-8">
+  <h1 class="text-4xl px-3">Theres more stuff right around the corner</h1>
+  {
+    postList.map((post) =>
+      post.id !== currentId ? (
+        <a
+          class="directory"
+          href={`/${linkId}/${post.slug}`}
+          style={setColors(post.data.colors.fg, post.data.colors.bg)}
+        >
+          <p>{post.data.title}</p>
+        </a>
+      ) : (
+        <p class="directory active">
+          <span>You Are Here:</span> {post.data.title}
+        </p>
+      )
+    )
+  }
+</footer>
+<style lang="postcss">
+  .directory {
+    @apply px-3 py-6 border-b-2 border-theme-dark block;
+    @apply text-2xl text-center;
+  }
+  .directory.active {
+    @apply py-8 my-1 border-2 border-dashed;
+  }
+</style>

@@ -5,6 +5,7 @@ import { ViewTransitions } from "astro:transitions";
 import { SITE } from "../../config";
 import BaseHead from "../../components/BaseHead.astro";
 import { getFirst } from "./helper";
+import PostFooter from "../../components/PostFooter.astro";
 
 // // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -23,7 +24,7 @@ const allPosts = (
   await getCollection("play", ({ data }) => {
     return data.archive !== true;
   })
-).sort((a, b) => a.data.publishDate.valueOf() - b.data.publishDate.valueOf());
+).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 const title = entry.data.title + ", " + SITE.title;
 const description = entry.data.description;
 const credits = entry.data.credits ? entry.data.credits : null;
@@ -44,7 +45,7 @@ const credits = entry.data.credits ? entry.data.credits : null;
   </header>
 
   <article class="px-3 mx-auto my-3 mt-12 col-2 md:flex gap-6 relative">
-    <section class="text-xl max-w-prose md:sticky top-3 self-start">
+    <section class="max-w-prose md:w-md lg:w-md md:sticky top-3 self-start">
       <p lang="en" class="text-lg mb-3">
         {entry.data.description}
       </p>
@@ -75,21 +76,8 @@ const credits = entry.data.credits ? entry.data.credits : null;
       <Content />
     </section>
   </article>
-  <footer class="mt-8">
-    {
-      allPosts.map((post) =>
-        post.id !== entry.id ? (
-          <a class="directory" href={`/work/${post.slug}`}>
-            <p>{post.data.title}</p>
-          </a>
-        ) : (
-          <p class="directory active">
-            <span>You Are Here:</span> {post.data.title}
-          </p>
-        )
-      )
-    }
-  </footer>
+
+  <PostFooter collection="play" postList={allPosts} currentId={entry.id} />
 </Layout>
 
 <style lang="postcss" is:global>

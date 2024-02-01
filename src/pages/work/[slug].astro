@@ -5,6 +5,7 @@ import ImageRow from "../../components/ImageRow.astro";
 import { ViewTransitions } from "astro:transitions";
 import { SITE } from "../../config";
 import BaseHead from "../../components/BaseHead.astro";
+import PostFooter from "../../components/PostFooter.astro";
 // // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const blogEntries = await getCollection("work");
@@ -63,32 +64,12 @@ const credits = entry.data.credits ? entry.data.credits : null;
     <section class="prose">
       <Content />
     </section>
-    <footer class="mt-8">
-      {
-        allPosts.map((post) =>
-          post.id !== entry.id ? (
-            <a class="directory" href={`/work/${post.slug}`}>
-              <p>{post.data.title}</p>
-            </a>
-          ) : (
-            <p class="directory active">
-              <span>You Are Here:</span> {post.data.title}
-            </p>
-          )
-        )
-      }
-    </footer>
   </article>
+  <PostFooter collection="work" postList={allPosts} currentId={entry.id} />
 </Layout>
 
 <style lang="postcss" is:global>
-  .directory {
-    @apply px-2 py-4 border-b-2 border-theme-dark block;
-    @apply text-xl;
-  }
-  .directory.active {
-    @apply py-3 my-1 border-2 border-dashed;
-  }
+ 
   .prose h1 {
     @apply text-4xl mb-4 mt-6;
   }
