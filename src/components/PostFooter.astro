@@ -22,7 +22,7 @@ function setColors(fg, bg) {
 ---
 
 <footer class="mt-8">
-  <h1 class="text-4xl px-3">Theres more stuff right around the corner</h1>
+  <h1 class="px-3">Theres more stuff right around the corner</h1>
   {
     postList.map((post) =>
       post.id !== currentId ? (
@@ -34,8 +34,11 @@ function setColors(fg, bg) {
           <p>{post.data.title}</p>
         </a>
       ) : (
-        <p class="directory active">
-          <span>You Are Here:</span> {post.data.title}
+        <p class="directory active flex items-center">
+          <span class="text-4xl border-2 border-theme-dark rounded-full px-3">
+            You Are Here:
+          </span>{" "}
+          <span>{post.data.title}</span>
         </p>
       )
     )
@@ -43,8 +46,8 @@ function setColors(fg, bg) {
 </footer>
 <style lang="postcss">
   .directory {
-    @apply px-3 py-6 border-b-2 border-theme-dark block;
-    @apply text-2xl text-center;
+    @apply px-3 py-12  border-theme-dark block;
+    @apply text-4xl md:text-6xl ;
   }
   .directory.active {
     @apply py-8 my-1 border-2 border-dashed;

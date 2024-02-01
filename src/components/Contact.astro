@@ -1,32 +1,35 @@
 ---
 
 ---
+
 <script>
-     // Find all buttons with the `modal` class on the page.
-     const buttons = document.querySelectorAll('button[data-contact]');
-  
+  // Find all buttons with the `modal` class on the page.
+  const buttons = document.querySelectorAll("button[data-contact]");
+
   // Handle clicks on each button.
   buttons.forEach((button) => {
-    const id = "contact-form"
-    button.addEventListener('click', () => {
-      const element = window.document.getElementById(id) as HTMLDialogElement
-      element.showModal()
+    const id = "contact-form";
+    button.addEventListener("click", () => {
+      const element = window.document.getElementById(id) as HTMLDialogElement;
+      element.showModal();
     });
   });
 </script>
 
 <dialog id="contact-form">
-  
   <p>This modal dialog has a groovy backdrop!</p>
-  <div>
-    
-  </div>
+  <div></div>
   <div>
     <form method="dialog">
       <p>
         <label>
           Email:
-          <input type="email" name="email" id="email" placeholder="Enter your email">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter your email"
+          />
         </label>
       </p>
       <menu>
@@ -34,8 +37,6 @@
         <button id="confirmBtn" value="default">Confirm</button>
       </menu>
     </form>
-    
-
   </div>
 </dialog>
 
@@ -193,5 +194,3 @@ textarea {
     margin: 1em 0;
 }
     </style>
-
-
