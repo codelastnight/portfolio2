@@ -192,6 +192,41 @@ declare module 'astro:content' {
   collection: "play";
   data: InferEntrySchema<"play">
 } & { render(): Render[".mdx"] };
+"frogfest2022/index.mdx": {
+	id: "frogfest2022/index.mdx";
+  slug: "frogfest2022";
+  body: string;
+  collection: "play";
+  data: InferEntrySchema<"play">
+} & { render(): Render[".mdx"] };
+"frogfest2023/index.mdx": {
+	id: "frogfest2023/index.mdx";
+  slug: "frogfest2023";
+  body: string;
+  collection: "play";
+  data: InferEntrySchema<"play">
+} & { render(): Render[".mdx"] };
+"mikunation/index.mdx": {
+	id: "mikunation/index.mdx";
+  slug: "mikunation";
+  body: string;
+  collection: "play";
+  data: InferEntrySchema<"play">
+} & { render(): Render[".mdx"] };
+"true-love/index.mdx": {
+	id: "true-love/index.mdx";
+  slug: "true-love";
+  body: string;
+  collection: "play";
+  data: InferEntrySchema<"play">
+} & { render(): Render[".mdx"] };
+"wrekwebsite/index.mdx": {
+	id: "wrekwebsite/index.mdx";
+  slug: "wrekwebsite";
+  body: string;
+  collection: "play";
+  data: InferEntrySchema<"play">
+} & { render(): Render[".mdx"] };
 };
 "work": {
 "atl-wayfinding/index.mdx": {

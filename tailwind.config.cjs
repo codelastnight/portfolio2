@@ -18,13 +18,13 @@ module.exports = {
 	plugins: [
 		function ({ addComponents, theme }) {
 			addComponents({
-				'a': {
+				'a:not(.link-clear)': {
 
 					color: theme('colors.theme.dark'),
 					textDecoration: 'underline',
 					background: theme('colors.theme.light')
 				},
-				'a:hover': {
+				'a:not(.link-clear):hover': {
 					color: theme('colors.theme.light'),
 					background: theme('colors.theme.dark')
 				}

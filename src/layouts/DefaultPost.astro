@@ -1,0 +1,45 @@
+---
+import type { MarkdownLayoutProps } from "astro";
+import type { CollectionEntry } from "astro:content";
+import ImageRow from "../components/ImageRow.astro";
+
+type entry = CollectionEntry<"work">;
+type Props = MarkdownLayoutProps<entry["data"]>;
+
+const { frontmatter } = Astro.props;
+
+const credits = frontmatter.credits ? frontmatter.credits : null;
+const slug = frontmatter.url.match(/[^\/]+/g).toString();
+---
+
+<header class="px-2 mb-4">
+  <h1
+    class="text-6xl lg:text-8xl text-center mt-2 mb-4"
+    transition:name={"title:" + slug}
+  >
+    {frontmatter.title}
+  </h1>
+  <ImageRow slug={slug} images={frontmatter.heroImages} />
+</header>
+
+<article class="px-2 max-w-prose mx-auto my-3 mt-12 col-2">
+  <section class="text-xl my-6">
+    <p lang="en" class="text-3xl mb-3">
+      {frontmatter.description}
+    </p>
+    <div class="grid grid-cols-2 md:grid-cols-4 text-base gap-4">
+      {
+        credits &&
+          Object.entries(credits).map(([key, value]) => (
+            <div>
+              <p class="opacity-80">{key}</p>
+              <p>{value}</p>
+            </div>
+          ))
+      }
+    </div>
+  </section>
+  <section class="prose">
+    <slot />
+  </section>
+</article>

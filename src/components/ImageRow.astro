@@ -32,6 +32,7 @@ const fullWidth = Object.entries(images).reduce(
       alt={img[0]}
       height={img[1].height}
       width={img[1].width}
+      loading="lazy"
       style=`aspect-ratio:${img[1].width} / ${img[1].height}; --img-preview-width: ${(img[1].width/fullWidth)*100}%`
     />)}
   </div>

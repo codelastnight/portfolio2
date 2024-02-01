@@ -7,29 +7,29 @@ const isHome = Astro.url.pathname === "/";
 <nav transition:name="nav">
   <div>
     <a href=`/${isHome ? '#' + ANCHORTAGS.work : ''}`>work</a>
-    <a href='/play'>play</a>
+    <a href="/after-hours">after-hours</a>
   </div>
   <div>
     <button data-contact class="psuedo-link">contact</button>
-    <a href='/#about'>about</a>
+    <a href="/#about">about</a>
   </div>
 </nav>
 
 <style lang="postcss">
     nav {
-        @apply sticky px-3 py-3 top-0 flex justify-between;
+        @apply sticky px-3 py-3 top-0 flex justify-between md:justify-center md:gap-10;
         @apply z-50;
     }
     nav>div {
-      @apply flex gap-6;
+      @apply flex gap-4 md:gap-10;
     }
     nav a {
-      @apply inline px-2 py-1 -mx-2 -my-1;
+      @apply inline px-1 py-0 -mx-1 -my-0;
       
     }
     .psuedo-link {
       @apply bg-theme-light text-theme-dark;
-      @apply underline inline px-2 py-1 -mx-2 -my-1;;
+      @apply underline inline px-1 py-0 -mx-1 -my-0;
       @apply hover:bg-theme-dark hover:text-theme-light;
     }
 </style>
