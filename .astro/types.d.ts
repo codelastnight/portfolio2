@@ -190,49 +190,49 @@ declare module 'astro:content' {
   slug: "comissions";
   body: string;
   collection: "play";
-  data: InferEntrySchema<"play">
+  data: any
 } & { render(): Render[".mdx"] };
 "ess/index.mdx": {
 	id: "ess/index.mdx";
   slug: "ess";
   body: string;
   collection: "play";
-  data: InferEntrySchema<"play">
+  data: any
 } & { render(): Render[".mdx"] };
 "frogfest2022/index.mdx": {
 	id: "frogfest2022/index.mdx";
   slug: "frogfest2022";
   body: string;
   collection: "play";
-  data: InferEntrySchema<"play">
+  data: any
 } & { render(): Render[".mdx"] };
 "frogfest2023/index.mdx": {
 	id: "frogfest2023/index.mdx";
   slug: "frogfest2023";
   body: string;
   collection: "play";
-  data: InferEntrySchema<"play">
+  data: any
 } & { render(): Render[".mdx"] };
 "mikunation/index.mdx": {
 	id: "mikunation/index.mdx";
   slug: "mikunation";
   body: string;
   collection: "play";
-  data: InferEntrySchema<"play">
+  data: any
 } & { render(): Render[".mdx"] };
 "true-love/index.mdx": {
 	id: "true-love/index.mdx";
   slug: "true-love";
   body: string;
   collection: "play";
-  data: InferEntrySchema<"play">
+  data: any
 } & { render(): Render[".mdx"] };
 "wrekwebsite/index.mdx": {
 	id: "wrekwebsite/index.mdx";
   slug: "wrekwebsite";
   body: string;
   collection: "play";
-  data: InferEntrySchema<"play">
+  data: any
 } & { render(): Render[".mdx"] };
 };
 "work": {
@@ -241,28 +241,35 @@ declare module 'astro:content' {
   slug: "atl-wayfinding";
   body: string;
   collection: "work";
-  data: InferEntrySchema<"work">
+  data: any
 } & { render(): Render[".mdx"] };
 "drawaudiotoy/index.mdx": {
 	id: "drawaudiotoy/index.mdx";
   slug: "drawaudiotoy";
   body: string;
   collection: "work";
-  data: InferEntrySchema<"work">
+  data: any
 } & { render(): Render[".mdx"] };
 "futureofwork/index.mdx": {
 	id: "futureofwork/index.mdx";
   slug: "futureofwork";
   body: string;
   collection: "work";
-  data: InferEntrySchema<"work">
+  data: any
+} & { render(): Render[".mdx"] };
+"loopie-laundry/index.mdx": {
+	id: "loopie-laundry/index.mdx";
+  slug: "loopie-laundry";
+  body: string;
+  collection: "work";
+  data: any
 } & { render(): Render[".mdx"] };
 "tamagatchi/index.mdx": {
 	id: "tamagatchi/index.mdx";
   slug: "tamagatchi";
   body: string;
   collection: "work";
-  data: InferEntrySchema<"work">
+  data: any
 } & { render(): Render[".mdx"] };
 };
 
@@ -274,5 +281,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	type ContentConfig = typeof import("../src/content/config");
+	type ContentConfig = never;
 }

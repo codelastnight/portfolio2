@@ -44,8 +44,8 @@ const credits = entry.data.credits ? entry.data.credits : null;
     <ImageRow slug={entry.slug} images={entry.data.heroImages} />
   </header>
 
-  <article class="px-2 max-w-prose mx-auto my-3 mt-12 col-2">
-    <section class="text-xl my-6">
+  <article class="px-2 my-3 mt-12 col-2">
+    <section class="text-xl my-6 max-w-prose mx-auto">
       <p lang="en" class="text-3xl mb-3">
         {entry.data.description}
       </p>
@@ -61,7 +61,7 @@ const credits = entry.data.credits ? entry.data.credits : null;
         }
       </div>
     </section>
-    <section class="prose">
+    <section class="prose w-full">
       <Content />
     </section>
   </article>
@@ -71,18 +71,22 @@ const credits = entry.data.credits ? entry.data.credits : null;
 <style lang="postcss" is:global>
  
   .prose h1 {
-    @apply text-4xl mb-4 mt-6;
+    @apply text-4xl mb-4 mt-6 mx-auto max-w-prose;
   }
   .prose h2 {
-    @apply text-2xl mb-4 mt-4;
+    @apply text-2xl mb-4 mt-4 mx-auto max-w-prose;
   }
   .prose h3 {
-    @apply text-2xl mb-3;
+    @apply text-2xl mb-3 mx-auto max-w-prose;
   }
   .prose h4 {
-    @apply text-2xl mb-3;
+    @apply text-2xl mb-3 mx-auto max-w-prose;
   }
   .prose p {
-    @apply mb-3 leading-7 text-lg;
+    @apply mb-3 leading-7 text-lg mx-auto max-w-prose;
   }
+  .prose img {
+    @apply lg:-mx-[10rem] w-full;
+  }
+
   </style>
