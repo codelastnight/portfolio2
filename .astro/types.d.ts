@@ -19,8 +19,6 @@ declare module 'astro:content' {
 }
 
 declare module 'astro:content' {
-	export { z } from 'astro/zod';
-
 	type Flatten<T> = T extends { [K: string]: infer U } ? U : never;
 
 	export type CollectionKey = keyof AnyEntryMap;
@@ -28,53 +26,6 @@ declare module 'astro:content' {
 
 	export type ContentCollectionKey = keyof ContentEntryMap;
 	export type DataCollectionKey = keyof DataEntryMap;
-
-	// This needs to be in sync with ImageMetadata
-	export type ImageFunction = () => import('astro/zod').ZodObject<{
-		src: import('astro/zod').ZodString;
-		width: import('astro/zod').ZodNumber;
-		height: import('astro/zod').ZodNumber;
-		format: import('astro/zod').ZodUnion<
-			[
-				import('astro/zod').ZodLiteral<'png'>,
-				import('astro/zod').ZodLiteral<'jpg'>,
-				import('astro/zod').ZodLiteral<'jpeg'>,
-				import('astro/zod').ZodLiteral<'tiff'>,
-				import('astro/zod').ZodLiteral<'webp'>,
-				import('astro/zod').ZodLiteral<'gif'>,
-				import('astro/zod').ZodLiteral<'svg'>,
-				import('astro/zod').ZodLiteral<'avif'>,
-			]
-		>;
-	}>;
-
-	type BaseSchemaWithoutEffects =
-		| import('astro/zod').AnyZodObject
-		| import('astro/zod').ZodUnion<[BaseSchemaWithoutEffects, ...BaseSchemaWithoutEffects[]]>
-		| import('astro/zod').ZodDiscriminatedUnion<string, import('astro/zod').AnyZodObject[]>
-		| import('astro/zod').ZodIntersection<BaseSchemaWithoutEffects, BaseSchemaWithoutEffects>;
-
-	type BaseSchema =
-		| BaseSchemaWithoutEffects
-		| import('astro/zod').ZodEffects<BaseSchemaWithoutEffects>;
-
-	export type SchemaContext = { image: ImageFunction };
-
-	type DataCollectionConfig<S extends BaseSchema> = {
-		type: 'data';
-		schema?: S | ((context: SchemaContext) => S);
-	};
-
-	type ContentCollectionConfig<S extends BaseSchema> = {
-		type?: 'content';
-		schema?: S | ((context: SchemaContext) => S);
-	};
-
-	type CollectionConfig<S> = ContentCollectionConfig<S> | DataCollectionConfig<S>;
-
-	export function defineCollection<S extends BaseSchema>(
-		input: CollectionConfig<S>
-	): CollectionConfig<S>;
 
 	type AllValuesOf<T> = T extends any ? T[keyof T] : never;
 	type ValidContentEntrySlug<C extends keyof ContentEntryMap> = AllValuesOf<
@@ -190,49 +141,49 @@ declare module 'astro:content' {
   slug: "comissions";
   body: string;
   collection: "play";
-  data: any
+  data: InferEntrySchema<"play">
 } & { render(): Render[".mdx"] };
 "ess/index.mdx": {
 	id: "ess/index.mdx";
   slug: "ess";
   body: string;
   collection: "play";
-  data: any
+  data: InferEntrySchema<"play">
 } & { render(): Render[".mdx"] };
 "frogfest2022/index.mdx": {
 	id: "frogfest2022/index.mdx";
   slug: "frogfest2022";
   body: string;
   collection: "play";
-  data: any
+  data: InferEntrySchema<"play">
 } & { render(): Render[".mdx"] };
 "frogfest2023/index.mdx": {
 	id: "frogfest2023/index.mdx";
   slug: "frogfest2023";
   body: string;
   collection: "play";
-  data: any
+  data: InferEntrySchema<"play">
 } & { render(): Render[".mdx"] };
 "mikunation/index.mdx": {
 	id: "mikunation/index.mdx";
   slug: "mikunation";
   body: string;
   collection: "play";
-  data: any
+  data: InferEntrySchema<"play">
 } & { render(): Render[".mdx"] };
 "true-love/index.mdx": {
 	id: "true-love/index.mdx";
   slug: "true-love";
   body: string;
   collection: "play";
-  data: any
+  data: InferEntrySchema<"play">
 } & { render(): Render[".mdx"] };
 "wrekwebsite/index.mdx": {
 	id: "wrekwebsite/index.mdx";
   slug: "wrekwebsite";
   body: string;
   collection: "play";
-  data: any
+  data: InferEntrySchema<"play">
 } & { render(): Render[".mdx"] };
 };
 "work": {
@@ -241,35 +192,35 @@ declare module 'astro:content' {
   slug: "atl-wayfinding";
   body: string;
   collection: "work";
-  data: any
+  data: InferEntrySchema<"work">
 } & { render(): Render[".mdx"] };
 "drawaudiotoy/index.mdx": {
 	id: "drawaudiotoy/index.mdx";
   slug: "drawaudiotoy";
   body: string;
   collection: "work";
-  data: any
+  data: InferEntrySchema<"work">
 } & { render(): Render[".mdx"] };
 "futureofwork/index.mdx": {
 	id: "futureofwork/index.mdx";
   slug: "futureofwork";
   body: string;
   collection: "work";
-  data: any
+  data: InferEntrySchema<"work">
 } & { render(): Render[".mdx"] };
 "loopie-laundry/index.mdx": {
 	id: "loopie-laundry/index.mdx";
   slug: "loopie-laundry";
   body: string;
   collection: "work";
-  data: any
+  data: InferEntrySchema<"work">
 } & { render(): Render[".mdx"] };
 "tamagatchi/index.mdx": {
 	id: "tamagatchi/index.mdx";
   slug: "tamagatchi";
   body: string;
   collection: "work";
-  data: any
+  data: InferEntrySchema<"work">
 } & { render(): Render[".mdx"] };
 };
 
@@ -281,5 +232,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	type ContentConfig = never;
+	export type ContentConfig = typeof import("./../src/content/config.js");
 }

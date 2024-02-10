@@ -10,11 +10,11 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "4.2.4"
+    "astro": "4.3.3"
   },
   "dependencies": {
     "@astrojs/check": "^0.4.1",
-    "@astrojs/mdx": "^2.1.0",
+    "@astrojs/mdx": "^2.1.1",
     "@astrojs/tailwind": "^5.1.0",
     "astro-m2dx": "^0.7.16",
     "remark-directive": "^3.0.0",
