@@ -24,7 +24,7 @@ const allPosts = (
     return data.archive !== true;
   })
 ).sort((a, b) => a.data.publishDate.valueOf() - b.data.publishDate.valueOf());
-const title = entry.data.title + ", " + SITE.title;
+const title = entry.data.title + " | " + SITE.title;
 const description = entry.data.description;
 const credits = entry.data.credits ? entry.data.credits : null;
 ---
