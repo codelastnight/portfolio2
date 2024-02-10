@@ -2,7 +2,7 @@
 import { ANCHORTAGS } from "../config";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
-import Contact from "../components/Contact.astro";
+import Contact from "../components/Contact/index.astro";
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 
@@ -43,7 +43,7 @@ const myFade = {
 };
 ---
 
-<html lang='en'>
+<html lang="en">
   <head>
     <style :global>
       @keyframe slideOut {
@@ -59,7 +59,7 @@ const myFade = {
   <body
     id={ANCHORTAGS.topOfPage}
     style={colorsStyles}
-    class='bg-light text-dark'
+    class="bg-light text-dark"
   >
     <Nav />
     <main id={ANCHORTAGS.mainContent}>
