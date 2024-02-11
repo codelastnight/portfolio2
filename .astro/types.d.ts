@@ -171,6 +171,13 @@ declare module 'astro:content' {
   collection: "play";
   data: InferEntrySchema<"play">
 } & { render(): Render[".mdx"] };
+"templat/index.mdx": {
+	id: "templat/index.mdx";
+  slug: "templat";
+  body: string;
+  collection: "play";
+  data: InferEntrySchema<"play">
+} & { render(): Render[".mdx"] };
 "true-love/index.mdx": {
 	id: "true-love/index.mdx";
   slug: "true-love";
@@ -178,9 +185,9 @@ declare module 'astro:content' {
   collection: "play";
   data: InferEntrySchema<"play">
 } & { render(): Render[".mdx"] };
-"wrekwebsite/index.mdx": {
-	id: "wrekwebsite/index.mdx";
-  slug: "wrekwebsite";
+"wstofedn/index.mdx": {
+	id: "wstofedn/index.mdx";
+  slug: "wstofedn";
   body: string;
   collection: "play";
   data: InferEntrySchema<"play">
