@@ -23,24 +23,24 @@ const allPosts = (
   <BaseHead {title} {description} />
 </head>
 <Layout colors={colors}>
-  <section class="px-3 mb-12 text-center flex flex-col items-center">
-    <h1 class="mainheading w-full lg:w-[80%]">
-      <span class="inline-flex justify-between items-center w-full">
+  <section class='px-3 mb-[30vh] text-center flex flex-col items-center'>
+    <h1 class='mainheading w-full lg:w-[80%]'>
+      <span class='inline-flex justify-between items-center w-full'>
         <span>After</span>
-        <span class="block md:inline-block md:-mx-5 flex-grow">
+        <span class='block md:inline-block md:-mx-5 flex-grow'>
           <svg
-            viewBox="0 0 276 54"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            height="0.8em"
-            class="w-full"
-            preserveAspectRatio="none"
+            viewBox='0 0 276 54'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+            height='0.8em'
+            class='w-full'
+            preserveAspectRatio='none'
           >
             <path
-              d="M31.8635 24.7067C50.1558 21.5862 68.4147 18.9657 86.332 14.8695C118.321 7.55618 149.672 1.65593 183.724 1.09729C201.824 0.800354 224.199 0.811594 240.707 6.80677C245.304 8.47629 254.758 13.9465 254.881 17.9943C255.181 27.8162 229.105 31.5918 219.903 33.6182C171.276 44.3251 121.314 51.5143 70.1 52.7912C57.4188 53.1074 47.6046 53.1619 35.2357 52.2511C30.506 51.9028 21.2292 51.4527 17.4606 48.4705C12.9979 44.939 16.4495 37.7513 20.0897 34.7369C27.6956 28.4384 41.0931 23.9151 52.2106 21.3505C82.7075 14.3153 116.835 10.1131 148.745 7.73263C181.521 5.2875 214.923 5.87167 246.994 11.3589C248.795 11.6671 275.105 15.6958 275 18.7658C274.967 19.7075 271.813 21.1523 271.456 21.3119C262.726 25.2148 252.577 28.1843 242.936 30.802C200.503 42.323 153.762 48.2767 108.108 49.2035C82.2338 49.7287 54.0633 48.8118 29.0058 43.8412C19.2123 41.8985 10.0761 38.1857 1 35.1227"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
+              d='M31.8635 24.7067C50.1558 21.5862 68.4147 18.9657 86.332 14.8695C118.321 7.55618 149.672 1.65593 183.724 1.09729C201.824 0.800354 224.199 0.811594 240.707 6.80677C245.304 8.47629 254.758 13.9465 254.881 17.9943C255.181 27.8162 229.105 31.5918 219.903 33.6182C171.276 44.3251 121.314 51.5143 70.1 52.7912C57.4188 53.1074 47.6046 53.1619 35.2357 52.2511C30.506 51.9028 21.2292 51.4527 17.4606 48.4705C12.9979 44.939 16.4495 37.7513 20.0897 34.7369C27.6956 28.4384 41.0931 23.9151 52.2106 21.3505C82.7075 14.3153 116.835 10.1131 148.745 7.73263C181.521 5.2875 214.923 5.87167 246.994 11.3589C248.795 11.6671 275.105 15.6958 275 18.7658C274.967 19.7075 271.813 21.1523 271.456 21.3119C262.726 25.2148 252.577 28.1843 242.936 30.802C200.503 42.323 153.762 48.2767 108.108 49.2035C82.2338 49.7287 54.0633 48.8118 29.0058 43.8412C19.2123 41.8985 10.0761 38.1857 1 35.1227'
+              stroke='currentColor'
+              stroke-width='2'
+              stroke-linecap='round'
             >
             </path>
           </svg>
@@ -49,27 +49,29 @@ const allPosts = (
       </span>
 
       <br />
-      <span class="">Exploration</span>
+      <span class=''>Exploration</span>
     </h1>
-    <p class="mt-4 lg:mt-10 text-xl md:text-2xl max-w-xs">
+    <p class='mt-6 lg:mt-16 text-xl md:text-2xl max-w-xs'>
       The first rule of fight club is to be yourself and have fun {"<3"}
     </p>
   </section>
-  <section class="px-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+  <section class='postsgrid px-3'>
     {
       allPosts?.map((post, index) => (
-        <a href={`/after-hours/${post.slug}`} class="link-clear content-item">
-          <article class="">
+        <a href={`/after-hours/${post.slug}`} class='link-clear content-item '>
+          <article class=''>
             {getFirst(post.data.heroImages, (img) => (
               <img
                 src={img[1].src}
                 alt={img[0]}
                 height={img[1].height}
                 width={img[1].width}
-                loading="lazy"
+                loading='lazy'
               />
             ))}
-            <h1 class="text-lg text-left w-fit">{post.data.title}</h1>
+            <h1 class='text-lg md:text-4xl text-left w-fit'>
+              {post.data.title}
+            </h1>
           </article>
         </a>
       ))
@@ -85,10 +87,10 @@ const allPosts = (
     }
 
     .content-item {
-      @apply  h-fit w-fit underline border-2 border-transparent border-dashed hover:border-theme-dark 
+      @apply h-fit w-fit underline border-2 border-transparent border-dashed hover:border-theme-dark 
     }
   .content-item article {
-    @apply max-w-xs md:max-w-sm lg:max-w-none px-2 py-3  ;
+    @apply max-w-sm md:max-w-sm lg:max-w-none px-2 py-3  ;
   }
   .content-item:nth-child(even) {
     justify-self: right;
@@ -99,4 +101,8 @@ const allPosts = (
   :global(body) {
     box-shadow: inset 0em 0em 1rem currentColor;
   }
+  .postsgrid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1
+  }
+  
 </style>

@@ -7,6 +7,7 @@ import ImageRow from "../components/ImageRow.astro";
 import { ViewTransitions } from "astro:transitions";
 import BaseHead from "../components/BaseHead.astro";
 import { SITE, ANCHORTAGS } from "../config";
+import ShinyButton from "../components/ShinyButton.astro";
 
 const { title } = SITE;
 const description = "Simon Zhang is just practicing design";
@@ -42,23 +43,25 @@ const allPosts = (
     id='work'
   >
     {allPosts?.map((post, index) => 
+      <a class="group link-clear" href={`/work/${post.slug}`} >
+
     <article class='w-full px-3 py-8 bg-theme-light text-theme-dark' style=`--c-light: ${post.data.colors.bg}; --c-dark: ${post.data.colors.fg} `  >
-  <header>
-    <h2 class='text-center pb-4'>
-      <span class='block'>Case Study {index}:</span>
-      <span class='block text-4xl md:text-5xl ' transition:name={"title:"+post.slug}>{post.data.title}</span>
-    </h2>
-  </header>
-  <ImageRow images={post.data.heroImages}  slug={post.slug} />
-  <footer class='flex justify-between mt-2 flex-col md:flex-row gap-2 leading-tight'>
-    <p class='max-w-md'>{post.data.description}</p>
-    <p>
-      <a href={`/work/${post.slug}`}>
-        Full Case Study: {post.data.title}
-      </a>
-    </p>
-  </footer>
-</article>)}
+      <header>
+        <h1 class='text-center pb-4 '>
+          <span class='block'>Case Study {index}:</span>
+          <span class='block text-4xl md:text-5xl group-hover:underline' transition:name={"title:"+post.slug}>{post.data.title}</span>
+        </h1>
+      </header>
+      <ImageRow images={post.data.heroImages}  slug={post.slug} class="" />
+      <footer class='flex justify-between mt-2 flex-col md:flex-row gap-2 leading-tight'>
+        <p class='max-w-md'>{post.data.description}</p>
+        <ShinyButton height="4em" width="13em" color={post.data.colors.fg} >
+           <span class="text-theme-light">View Full Case Study</span>
+        </ShinyButton>
+      </footer>
+    </article>          
+    </a>
+)}
   </section>
   <section id="about" class='px-2 my-10 grid grid-cols-1 lg:grid-cols-2 '>
     <div class="lg:col-start-2">

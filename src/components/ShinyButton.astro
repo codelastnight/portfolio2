@@ -27,8 +27,9 @@ const {
   style=`width:${width}; height: ${height}; border-radius: ${radius}; --btn-color: ${color}`
   type={type}
   value={value}
+  tabindex='-1'
 >
-  <p class="text">
+  <p class='text'>
     <slot />
   </p>
 </button>

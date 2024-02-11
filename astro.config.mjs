@@ -3,6 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import mdx from '@astrojs/mdx';
 import { h } from 'hastscript'
 import { visit } from 'unist-util-visit'
+import { selectAll } from 'unist-util-select';
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,7 +20,7 @@ export default defineConfig({
 
 
 
-// This plugin is an example to turn `::note` into divs, passing arbitrary
+// This plugin is an example to adds custom classes to images
 // attributes.
 function myRemarkPlugin() {
   /**
@@ -29,20 +30,21 @@ function myRemarkPlugin() {
    *   Nothing.
    */
   return (tree) => {
-    visit(tree, (node) => {
-      if (
-        node.type === 'containerDirective' ||
-        node.type === 'leafDirective' ||
-        node.type === 'textDirective'
-      ) {
-        if (node.name !== 'note') return
+    const paragraph = selectAll('paragraph, heading', tree);
 
-        const data = node.data || (node.data = {})
-        const tagName = node.type === 'textDirective' ? 'span' : 'div'
-
-        data.hName = tagName
-        data.hProperties = h(tagName, node.attributes || {}).properties
+    paragraph.forEach(node => {
+      if (!node.data) node.data = {};
+      if (node.children.some(e => e.type === 'image')) {
+        node.data.hProperties = {
+          className: 'paragraph-image'
+        }
+      } else {
+        node.data.hProperties = {
+          className: 'paragraph-text'
+        }
       }
+
     })
+
   }
 }

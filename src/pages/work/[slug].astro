@@ -30,13 +30,13 @@ const credits = entry.data.credits ? entry.data.credits : null;
 ---
 
 <head>
-  <ViewTransitions fallback="none" />
+  <ViewTransitions fallback='none' />
   <BaseHead {title} {description} />
 </head>
 <Layout colors={entry.data.colors}>
-  <header class="px-2 mb-4">
+  <header class='px-2 mb-4'>
     <h1
-      class="text-6xl lg:text-8xl text-center mt-2 mb-4"
+      class='text-6xl lg:text-8xl text-center mt-2 mb-4'
       transition:name={"title:" + entry.slug}
     >
       {entry.data.title}
@@ -44,49 +44,53 @@ const credits = entry.data.credits ? entry.data.credits : null;
     <ImageRow slug={entry.slug} images={entry.data.heroImages} />
   </header>
 
-  <article class="px-2 my-3 mt-12 col-2">
-    <section class="text-xl my-6 max-w-prose mx-auto">
-      <p lang="en" class="text-3xl mb-3">
+  <article class='px-2 mb-24 mt-12 col-2'>
+    <section class='text-xl my-6 max-w-3xl mx-auto'>
+      <p lang='en' class='text-3xl mb-3'>
         {entry.data.description}
       </p>
-      <div class="grid grid-cols-2 md:grid-cols-4 text-base gap-4">
+      <div class='grid grid-cols-2 md:grid-cols-4 text-base gap-4'>
         {
           credits &&
             Object.entries(credits).map(([key, value]) => (
               <div>
-                <p class="opacity-80">{key}</p>
+                <p class='opacity-80'>{key}</p>
                 <p>{value}</p>
               </div>
             ))
         }
       </div>
     </section>
-    <section class="prose w-full">
+    <section class='prose w-full'>
       <Content />
     </section>
   </article>
-  <PostFooter collection="work" postList={allPosts} currentId={entry.id} />
+  <PostFooter collection='work' postList={allPosts} currentId={entry.id} />
 </Layout>
 
 <style lang="postcss" is:global>
+
  
+  .paragraph-text {
+    @apply mx-auto max-w-3xl leading-relaxed lg:leading-relaxed text-lg mb-4 lg:text-xl;
+  }
+  .paragraph-image {
+    @apply mx-auto max-w-5xl mt-12 mb-12;
+
+  }
+  .prose h1,h2,h3,h4 {
+    @apply text-center ;
+ }
   .prose h1 {
-    @apply text-4xl mb-4 mt-6 mx-auto max-w-prose;
+    @apply text-6xl md:text-7xl mb-4 mt-12 py-3 px-6 max-w-xl;
   }
   .prose h2 {
-    @apply text-2xl mb-4 mt-4 mx-auto max-w-prose;
+    @apply text-4xl mb-4 mt-8;
   }
   .prose h3 {
-    @apply text-2xl mb-3 mx-auto max-w-prose;
+    @apply text-2xl mb-6;
   }
   .prose h4 {
-    @apply text-2xl mb-3 mx-auto max-w-prose;
+    @apply text-2xl mb-4;
   }
-  .prose p {
-    @apply mb-3 leading-7 text-lg mx-auto max-w-prose;
-  }
-  .prose img {
-    @apply lg:-mx-[10rem] w-full;
-  }
-
   </style>

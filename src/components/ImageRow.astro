@@ -8,11 +8,11 @@ interface image {
 
 interface Props {
   images: {[key:string]: image}
-  alt?: string[],
   slug?: string
+  class?: string
 }
 
-const {slug, images } = Astro.props;
+const {slug, images, class:astroClass} = Astro.props;
 const spacing = 16
 const fullWidth = Object.entries(images).reduce(
   (accumulator, currentImage, index) => {
@@ -33,6 +33,7 @@ const fullWidth = Object.entries(images).reduce(
       height={img[1].height}
       width={img[1].width}
       loading="lazy"
+      class={astroClass}
       style=`aspect-ratio:${img[1].width} / ${img[1].height}; --img-preview-width: ${(img[1].width/fullWidth)*100}%`
     />)}
   </div>
