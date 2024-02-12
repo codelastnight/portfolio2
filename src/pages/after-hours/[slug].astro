@@ -35,7 +35,7 @@ const credits = entry.data.credits ? entry.data.credits : null;
   <BaseHead {title} {description} />
 </head>
 <Layout colors={entry.data.colors}>
-  <header class='px-2 mb-4'>
+  <header class='page-margins mb-4'>
     <h1
       class='text-4xl lg:text-8xl text-center mt-2 mb-4'
       transition:name={"title:" + entry.slug}
@@ -44,12 +44,12 @@ const credits = entry.data.credits ? entry.data.credits : null;
     </h1>
   </header>
 
-  <article class='px-3 mx-auto my-3 mt-12 col-2 md:flex gap-6 relative'>
+  <article class='page-margins mx-auto my-3 mt-12 col-2 md:flex gap-6 relative'>
     <section class='max-w-prose md:w-md lg:w-md md:sticky top-[1em] self-start'>
-      <p lang='en' class='text-lg mb-3 md:w-[29ch] lg:w-[35ch] mt-3'>
+      <p lang='en' class='lg:text-lg mb-3 md:w-[27ch] lg:w-[30ch] mt-3'>
         {entry.data.description}
       </p>
-      <div class='grid grid-cols-2 text-base gap-4'>
+      <div class='grid grid-cols-2 text-sm lg:text-base gap-4'>
         {
           credits &&
             Object.entries(credits).map(([key, value]) => (
