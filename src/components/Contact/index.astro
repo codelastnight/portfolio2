@@ -8,41 +8,49 @@ import signal from "./signal.svg?raw";
 <script>
   // Find all buttons with the `modal` class on the page.
   const buttons = document.querySelectorAll("button[data-contact]");
+  const emailadd1 = "simonzhang";
+  const emailadd2 = "003";
 
   // Handle clicks on each button.
   buttons.forEach((button) => {
     const id = "contact-form";
     button.addEventListener("click", () => {
+      const email = window.document.getElementById(
+        "email-address"
+      ) as HTMLElement;
+      email.innerHTML = emailadd1 + emailadd2 + "@" + "gmail" + ".com";
+
       const element = window.document.getElementById(id) as HTMLDialogElement;
       element.showModal();
     });
   });
 </script>
 
-<dialog id="contact-form" class="max-w-lg w-full">
-  <div class="phone">
-    <header class="flex justify-between items-center px-2 py-1">
+<dialog id='contact-form' class='max-w-lg w-full'>
+  <div class='phone'>
+    <header class='flex justify-between items-center px-2 py-1'>
       <Fragment set:html={signal} />
       <Fragment set:html={email} />
       <Fragment set:html={battery} />
     </header>
 
-    <div class="content">
-      <div class="hero">
-        <h1 class="text-4xl">
+    <div class='content'>
+      <div class='hero'>
+        <h1 class='text-2xl lg:text-4xl'>
           Simon Zhang is available in the following addresses:
         </h1>
       </div>
       <div></div>
       <div>
-        <form method="dialog">
-          <menu>
+        <form method='dialog'>
+          <h2 id='email-address' class='text-xl lg:text-4xl'></h2>
+          <menu class='mt-6'>
             <ShinyButton
-              type="submit"
-              value="cancel"
-              width="4rem"
-              height="3rem"
-              radius="0.5rem"
+              type='submit'
+              value='cancel'
+              width='4rem'
+              height='3rem'
+              radius='0.5rem'
             >
               Cancel
             </ShinyButton>
@@ -119,7 +127,7 @@ form {
     color: var(--contactbg);
     background: var(--contactfg);
     border-radius: 0.25em;
-    padding: 0.25rem 0.5rem;
+    @apply p-4;
 }
 
  
