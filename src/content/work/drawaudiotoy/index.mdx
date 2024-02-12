@@ -2,8 +2,8 @@
 title: Music Box Toy that Transforms Drawings into Sound
 publishDate: 16 May 2022
 colors:
-  fg: "#d92b04"
-  bg: "#dfebf0"
+  fg: "#DA0000"
+  bg: "#FFF6E8"
 description: A Music making toy that takes marker drawings and turns them into sound so that even young kids aged 6-7 can learn the beginnings of music composition.
 heroImages:
   music box toy that uses crayon drawings as input: "./Group 62.jpg"
@@ -16,23 +16,20 @@ credits:
 ---
 
 ![](<./toy project 26.jpg>)
-
-Utilizes OpenCV Image Recognition on a Raspberry Pi Zero to enable limitless ways to draw composition.
-
 ![](<./Frame 56.jpg>)
 ![](<./Frame 57.jpg>)
 
 # Research
 
-Focused on toys for the project, I explored the concept of educational toys and interviewed the owners of Rhen's Nest, a local shop specializing in educational and puzzle toys for kids.
-
 ![](<./toy project 30.jpg>)
 
-## Honing in on Music
+## Only 20% of high schoolers are involved in music education. If music is a core cultural practice that many enjoy, then <mark>why is participation so low </mark>?
 
-Traditional music education focuses on physical performance, meaning only the dedicated few can participate.
+Despite growing up learning how to play classical music, I always struggled to figure out how to play modern pop songs, jazz music, or any other modern genre of music. Why is it so hard for me to play my favorite songs on the piano? Why didn't my peers, who love listening to music, participate in music education? This question led me to explore music education as a topic.
 
 ![](<./toy project 31.jpg>)
+
+## Traditional music education focuses on performance, meaning <mark>only the dedicated few can participate.</mark>
 
 Music education traditionally emphasized performance, excluding those who couldn't keep up. In contrast, composition doesn't rely on physical ability, making it more inclusive for a wider audience of people.
 
@@ -42,34 +39,59 @@ Keeping this in mind, a comparative analysis of competing products shows a produ
 
 ![](<./toy project 21.jpg>)
 
-## Beyond western music notation
+## I took note of non-western modes of music such as the [japanese mode](https://en.wikipedia.org/wiki/Japanese_mode) which has a <mark>Pentatonic scale</mark> (5 notes per octave) compared to the western 7 note per octave.
 
-I also took note of non-western modes of music such as the [japanese mode](https://en.wikipedia.org/wiki/Japanese_mode) which has a Pentatonic scale (5 notes per octave) compared to the western 7 note per octave. Of particular interest to me was the [Shakuhachi notation](https://en.wikipedia.org/wiki/Shakuhachi_musical_notation).
+Of particular interest to me was the [Shakuhachi notation](https://en.wikipedia.org/wiki/Shakuhachi_musical_notation).
 
-The use of Western Classical Notation today is a highly contentious and controversial topic, with opponents declaring that ["Notation Must Die"](https://www.youtube.com/watch?v=Eq3bUFgEcb4), or that the written score is an elitist ["cult"](https://www.youtube.com/watch?v=KA6mkg0KNco)
+> The use of Western Classical Notation today is a highly contentious and
+> controversial topic, with opponents declaring that ["Notation Must
+> Die"](https://www.youtube.com/watch?v=Eq3bUFgEcb4), or that the written score
+> is an elitist ["cult"](https://www.youtube.com/watch?v=KA6mkg0KNco)
+
+## There is a surge in interest in <mark>'vintage' and creation toys</mark>
+
+Focused on toys for the project, I explored the concept of educational toys and interviewed the owners of Rhen's Nest, a local shop specializing in educational and puzzle toys for kids.
 
 # Ideation to Prototyping
 
-![](<./toy project 2224.jpg>)
+## I focused on non-screen <mark>interactions familiar to children</mark>
 
+The move away from screens gave me space to explore unique designs. After considering the day-today activities of a child, I settled on drawing as a interaction.
+
+![](<./toy project 2224.jpg>)
 ![](<./toy project 33.jpg>)
+
+## The Music box, a <mark>simple and familiar visual story</mark>.
+
 ![](<./toy project 252.jpg>)
 ![](<./toy project 36.jpg>)
 
 ![](<./toy project 27.jpg>)
-Find the [source code here](https://github.com/codelastnight/color2audio/blob/main/detection.py)
+
+## Utilizes OpenCV Image Recognition on a Raspberry Pi Zero to enable limitless ways to draw composition.
+
+I detect colors on the paper, line by line, translating each to a different note using MIDI. A VST plugin at the other end takes the notes in and converts this into sound. Find the [source code here](https://github.com/codelastnight/color2audio/blob/main/detection.py)
+
 ![](<./toy project 28.jpg>)
 
+## Unlimited ways of guided or unguided learning through different printed pages. The versatility allows for <mark>first-class support of non-western world music.</mark>
+
 # Redesign
+
+## Rethinking familiarity in visual stories for children through calling back to the classic machined wooden toys.
 
 The form felt unresolved, so I went back to the drawing board. I wanted to call back to the classic machined wooden toys, rather then the lasercut method I originally used.
 
 ![](<./toy project 34.jpg>)
+
 ![](<./Group 61.jpg>)
+
 ![](<./Frame 56.jpg>)
+
 ![](<./Frame 57.jpg>)
+
 ![](<./Frame 58.jpg>)
 
 # Reflection
 
-This project speaks to me personally, growing up I had learned to play classical music. However, in my later years I came to the upsetting realization that this knowledge was often useless in trying to apply it to modern music. I was fascinated with modern UX developments in music production, and also post-colonial critiques on western music theory. This project let me experiment with applying my own philosophy of design, alongside learning OpenCV, woodworking, and lasercutting.
+This project speaks to me personally, growing up I had learned to play classical music. However, in my later years I came to the realization that this knowledge was often difficult to apply into modern music. I was fascinated with modern UX developments in music production, and also post-colonial critiques on western music theory. This project let me experiment with applying my own philosophy of design, alongside learning OpenCV, woodworking, and lasercutting.

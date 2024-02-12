@@ -1,8 +1,8 @@
 import { defineConfig, passthroughImageService } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 import mdx from '@astrojs/mdx';
-import { h } from 'hastscript'
-import { visit } from 'unist-util-visit'
+import yaml from '@rollup/plugin-yaml';
+
 import { selectAll } from 'unist-util-select';
 
 // https://astro.build/config
@@ -16,6 +16,9 @@ export default defineConfig({
     // Applied to .md and .mdx files
     remarkPlugins: [myRemarkPlugin],
   },
+  vite: {
+    plugins: [yaml()]
+  }
 });
 
 

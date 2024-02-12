@@ -8,9 +8,20 @@ import { ViewTransitions } from "astro:transitions";
 import BaseHead from "../components/BaseHead.astro";
 import { SITE, ANCHORTAGS } from "../config";
 import ShinyButton from "../components/ShinyButton.astro";
-
+import pageConfig from './indexConfig.yaml'
 const { title } = SITE;
 const description = "Simon Zhang is just practicing design";
+
+interface PageConfig {
+  funFacts: {
+    [key: string]: {
+      link: string
+      text: string
+    }
+  }
+}
+const funFacts = (pageConfig as PageConfig).funFacts
+
 
 // Data Fetching: List all Markdown posts in the repo.
 
@@ -65,21 +76,20 @@ const allPosts = (
     </a>
 )}
   </section>
-  <section id="about" class='px-2 py-10 grid grid-cols-1 lg:grid-cols-2 bg-theme-light relative'>
+  <section id="about" class='px-2 py-10 grid grid-cols-1 lg:grid-cols-2 bg-theme-light relative z-10'>
     <div class="lg:col-start-2">
       <p class='text-3xl lg:text-4xl indent-[3em] max-w-2xl'>
         simon zhang is a cross-disciplinary designer based in ATL & SEA —
-        netscape-oriented with a windows aero slant. creating intimacy between
+        netscape-oriented with a windows aero slant. Bachlor of Science in Industrial Design from Georgia Tech. Creating intimacy between
         physical and digital products. <span>    
           <button data-contact class="psuedo-link">lets connect <3</button>
         </span>
       </p>
       <div class='grid grid-cols-2 gap-y-2 gap-x-1 mt-6 max-w-2xl'>
-        <p>
-          Listening To: <br /> Five Years of Work and We Built That Song by
-          Newfound Interest in Connecticut
-        </p>
-        <p>Reading right now: <br />CAPS LOCK by Ruben Pater</p>  
+        {Object.entries(funFacts).map(([title,data]) =>(
+          <p>{title} <br/><a href={data.link} target="_blank">{data.text}</a></p>
+        ))}
+      
         <p>See how this site was built 👀<br /> 
           <a href="https://github.com/codelastnight/portfolio2">
           Source Code on Github
