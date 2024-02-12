@@ -27,6 +27,11 @@ module.exports = {
 				'a:not(.link-clear):hover, .link:hover': {
 					color: theme('colors.theme.light'),
 					background: theme('colors.theme.dark')
+				},
+				'.page-margins': {
+					paddingLeft: theme('spacing.4'),
+					paddingRight: theme('spacing.4')
+
 				}
 			});
 		},

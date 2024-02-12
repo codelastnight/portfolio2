@@ -4,7 +4,10 @@ import { ANCHORTAGS } from "../config";
 const year = new Date().getFullYear(); // copyriht for latest time that webpage is generated
 ---
 
-<footer style='--c-light: var(--c-bg); --c-dark: var(--c-fg); '>
+<footer
+  class='page-margins'
+  style='--c-light: var(--c-bg); --c-dark: var(--c-fg); '
+>
   <a href=`#${ANCHORTAGS.topOfPage}`>back to top</a>
   <svg
     width='100%'
@@ -29,7 +32,7 @@ const year = new Date().getFullYear(); // copyriht for latest time that webpage 
 
 <style lang="postcss">
   footer {
-    @apply bg-theme-dark text-theme-light px-2 pb-12 pt-6;
+    @apply bg-theme-dark text-theme-light pb-12 pt-6;
   }
   a {
     --c-light: var(--c-fg);

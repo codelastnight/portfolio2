@@ -21,20 +21,20 @@ function setColors(fg, bg) {
 }
 ---
 
-<footer class="mt-8">
+<footer class='mt-8'>
   {
     postList.map((post) =>
       post.id !== currentId ? (
         <a
-          class="directory"
+          class='directory page-margins'
           href={`/${linkId}/${post.slug}`}
           style={setColors(post.data.colors.fg, post.data.colors.bg)}
         >
           <p>{post.data.title}</p>
         </a>
       ) : (
-        <p class="directory active flex items-center">
-          <span class="text-2xl md:text-3xl border-2 border-theme-dark rounded-full px-3">
+        <p class='directory active page-margins flex items-center'>
+          <span class='text-2xl md:text-3xl border-2 border-theme-dark rounded-full px-3'>
             You Are Here:
           </span>{" "}
           <span>{post.data.title}</span>
@@ -45,7 +45,7 @@ function setColors(fg, bg) {
 </footer>
 <style lang="postcss">
   .directory {
-    @apply px-3 py-12  border-theme-dark block;
+    @apply py-12  border-theme-dark block;
     @apply text-3xl md:text-5xl ;
   }
   .directory.active {

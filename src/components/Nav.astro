@@ -4,20 +4,20 @@ import { ANCHORTAGS } from "../config";
 const isHome = Astro.url.pathname === "/";
 ---
 
-<nav transition:name="nav">
+<nav transition:name='nav' class='page-margins'>
   <div>
     <a href=`/${isHome ? '#' + ANCHORTAGS.work : ''}`>work</a>
-    <a href="/after-hours">after-hours</a>
+    <a href='/after-hours'>after-hours</a>
   </div>
   <div>
-    <button data-contact class="psuedo-link">contact</button>
-    <a href="/#about">about</a>
+    <button data-contact class='psuedo-link'>contact</button>
+    <a href='/#about'>about</a>
   </div>
 </nav>
 
 <style lang="postcss">
     nav {
-        @apply sticky px-3 py-3 top-0 flex justify-between md:justify-center md:gap-10;
+        @apply sticky py-3 top-0 flex justify-between md:justify-center md:gap-10;
         @apply z-50;
     }
     nav>div {
