@@ -29,13 +29,16 @@ const allPosts = (
   
 </head>
 <Layout>
-  <MainHero />
-  <section class='flex flex-col items-center px-2 mt-[15vh]' >
-    
-    <p class="text-center">
-      Graphic designer and Web developer <a href="/after-hours">in the evening</a>
-    </p>
-  </section>
+  <div class="md:sticky top-12">
+    <MainHero />
+    <section class='flex flex-col items-center px-2 mt-[15vh]' >
+      
+      <p class="text-center">
+        Graphic designer and Web developer <a href="/after-hours">in the evening</a>
+      </p>
+    </section>
+  </div>
+  
 
   <section
     aria-label='Blog post list'
@@ -43,9 +46,8 @@ const allPosts = (
     id='work'
   >
     {allPosts?.map((post, index) => 
-      <a class="group link-clear" href={`/work/${post.slug}`} >
-
-    <article class='w-full px-3 py-8 bg-theme-light text-theme-dark' style=`--c-light: ${post.data.colors.bg}; --c-dark: ${post.data.colors.fg} `  >
+      <a href={`/work/${post.slug}`} class="group link-clear md:sticky top-0"  >
+    <article class='w-full px-3 py-12 bg-theme-light text-theme-dark' style=`--c-light: ${post.data.colors.bg}; --c-dark: ${post.data.colors.fg} `  >
       <header>
         <h1 class='text-center pb-4 '>
           <span class='block'>Case Study {index}:</span>
@@ -63,7 +65,7 @@ const allPosts = (
     </a>
 )}
   </section>
-  <section id="about" class='px-2 my-10 grid grid-cols-1 lg:grid-cols-2 '>
+  <section id="about" class='px-2 py-10 grid grid-cols-1 lg:grid-cols-2 bg-theme-light relative'>
     <div class="lg:col-start-2">
       <p class='text-3xl lg:text-4xl indent-[3em] max-w-2xl'>
         simon zhang is a cross-disciplinary designer based in ATL & SEA —
@@ -93,4 +95,5 @@ const allPosts = (
   .psuedo-link {
     @apply underline hover:bg-theme-dark hover:text-theme-light;
   }
+ 
 </style>
