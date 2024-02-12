@@ -10,20 +10,23 @@ import signal from "./signal.svg?raw";
   const buttons = document.querySelectorAll("button[data-contact]");
   const emailadd1 = "simonzhang";
   const emailadd2 = "003";
+  function addContactHandler() {
+    // Handle clicks on each button.
+    buttons.forEach((button) => {
+      const id = "contact-form";
+      button.addEventListener("click", () => {
+        const email = window.document.getElementById(
+          "email-address"
+        ) as HTMLElement;
+        email.innerHTML = emailadd1 + emailadd2 + "@" + "gmail" + ".com";
 
-  // Handle clicks on each button.
-  buttons.forEach((button) => {
-    const id = "contact-form";
-    button.addEventListener("click", () => {
-      const email = window.document.getElementById(
-        "email-address"
-      ) as HTMLElement;
-      email.innerHTML = emailadd1 + emailadd2 + "@" + "gmail" + ".com";
-
-      const element = window.document.getElementById(id) as HTMLDialogElement;
-      element.showModal();
+        const element = window.document.getElementById(id) as HTMLDialogElement;
+        element.showModal();
+      });
     });
-  });
+  }
+
+  document.addEventListener("DOMContentLoaded", addContactHandler);
 </script>
 
 <dialog id='contact-form' class='max-w-lg w-full'>
