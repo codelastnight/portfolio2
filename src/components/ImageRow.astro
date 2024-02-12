@@ -25,7 +25,7 @@ const fullWidth = Object.entries(images).reduce(
 ---
 
 
-  <div class='w-full img-preview flex flex-col lg:flex-row justify-between gap-y-1' transition:name={"images:"+slug}  >
+  <div class='w-full img-preview flex flex-col md:flex-row justify-between gap-y-1' transition:name={"images:"+slug}  >
     {Object.entries(images).map((img)=> 
       <img
       src={img[1].src}
@@ -43,7 +43,7 @@ const fullWidth = Object.entries(images).reduce(
   .img-preview img{
     --img-preview-width: 100%;
     height: auto; 
-    @apply w-full lg:w-[var(--img-preview-width)];
+    @apply w-full md:w-[var(--img-preview-width)];
   }
   
 </style>

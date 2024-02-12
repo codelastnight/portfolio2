@@ -32,8 +32,8 @@ const allPosts = (
   <MainHero />
   <section class='flex flex-col items-center px-2 mt-[15vh]' >
     
-    <p>
-      Graphic designer and Web developer in the evening
+    <p class="text-center">
+      Graphic designer and Web developer <a href="/after-hours">in the evening</a>
     </p>
   </section>
 
@@ -53,10 +53,10 @@ const allPosts = (
         </h1>
       </header>
       <ImageRow images={post.data.heroImages}  slug={post.slug} class="" />
-      <footer class='flex justify-between mt-2 flex-col md:flex-row gap-2 leading-tight'>
-        <p class='max-w-md'>{post.data.description}</p>
-        <ShinyButton height="4em" width="13em" color={post.data.colors.fg} >
-           <span class="text-theme-light">View Full Case Study</span>
+      <footer class='flex justify-between flex-col md:flex-row mt-2 gap-2 leading-tight'>
+        <p class='text-sm md:text-base max-w-md flex-shrink'>{post.data.description}</p>
+        <ShinyButton height="4em" width="13em" color={post.data.colors.fg} class='self-center min-w-[7em]'>
+           <span class="text-theme-light text-center">View Full Case Study</span>
         </ShinyButton>
       </footer>
     </article>          
@@ -68,7 +68,8 @@ const allPosts = (
       <p class='text-3xl lg:text-4xl indent-[3em] max-w-2xl'>
         simon zhang is a cross-disciplinary designer based in ATL & SEA —
         netscape-oriented with a windows aero slant. creating intimacy between
-        physical and digital products. <span>    <button data-contact class="psuedo-link">lets connect <3</button>
+        physical and digital products. <span>    
+          <button data-contact class="psuedo-link">lets connect <3</button>
         </span>
       </p>
       <div class='grid grid-cols-2 gap-y-2 gap-x-1 mt-6 max-w-2xl'>
