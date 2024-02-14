@@ -1,0 +1,76 @@
+---
+interface Props {
+  placeholderImg: string;
+  src: string;
+  folder: string;
+}
+const { placeholderImg, src, folder } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/content/**/*.{jpg,mp4}"
+);
+console.log(`/src/content/${folder}/${src}`);
+async function checkpath(contentFolder, path: string) {
+  if (!path) throw new Error("path is undefined");
+  if (path.startsWith("./")) path.replace("./", "");
+
+  if (!images[`/src/content/${folder}/${path}`])
+    throw new Error(
+      `"${src}" does not exist in glob: "src/images/*.{jpeg,jpg,png,gif}"`
+    );
+  return (await images[`/src/content/${contentFolder}/${path}`]()).default;
+}
+
+const posterImg = await checkpath(folder, placeholderImg);
+const videoSrc = await checkpath(folder, src);
+---
+
+<video
+  class='lazy'
+  autoplay
+  muted
+  loop
+  playsinline
+  poster={posterImg.src}
+  width={posterImg.width}
+  height={posterImg.height}
+>
+  <source data-src={videoSrc} type='video/mp4' />
+</video>
+
+<script>
+  function handleVideoLoadLazy() {
+    const lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"));
+
+    if ("IntersectionObserver" in window) {
+      var lazyVideoObserver = new IntersectionObserver(function (
+        entries,
+        observer
+      ) {
+        entries.forEach((video) => {
+          if (video.isIntersecting) {
+            for (var source in video.target.children) {
+              var videoSource = video.target.children[
+                source
+              ] as HTMLSourceElement;
+              if (
+                typeof videoSource.tagName == "string" &&
+                videoSource.tagName == "SOURCE" &&
+                videoSource.dataset.src
+              )
+                videoSource.src = videoSource.dataset.src;
+            }
+
+            video.target.load();
+            video.target.classList.remove("lazy");
+            lazyVideoObserver.unobserve(video.target);
+          }
+        });
+      });
+
+      lazyVideos.forEach(function (lazyVideo) {
+        lazyVideoObserver.observe(lazyVideo);
+      });
+    }
+  }
+  document.addEventListener("DOMContentLoaded", handleVideoLoadLazy);
+</script>
