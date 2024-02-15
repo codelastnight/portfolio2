@@ -136,9 +136,30 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"play": {
+"3d-images/index.mdx": {
+	id: "3d-images/index.mdx";
+  slug: "3d-images";
+  body: string;
+  collection: "play";
+  data: InferEntrySchema<"play">
+} & { render(): Render[".mdx"] };
+"48hr-repack/index.mdx": {
+	id: "48hr-repack/index.mdx";
+  slug: "48hr-repack";
+  body: string;
+  collection: "play";
+  data: InferEntrySchema<"play">
+} & { render(): Render[".mdx"] };
 "comissions/index.mdx": {
 	id: "comissions/index.mdx";
   slug: "comissions";
+  body: string;
+  collection: "play";
+  data: InferEntrySchema<"play">
+} & { render(): Render[".mdx"] };
+"cool-roofs/index.mdx": {
+	id: "cool-roofs/index.mdx";
+  slug: "cool-roofs";
   body: string;
   collection: "play";
   data: InferEntrySchema<"play">
@@ -167,6 +188,20 @@ declare module 'astro:content' {
 "mikunation/index.mdx": {
 	id: "mikunation/index.mdx";
   slug: "mikunation";
+  body: string;
+  collection: "play";
+  data: InferEntrySchema<"play">
+} & { render(): Render[".mdx"] };
+"saturn-font/index.mdx": {
+	id: "saturn-font/index.mdx";
+  slug: "saturn-font";
+  body: string;
+  collection: "play";
+  data: InferEntrySchema<"play">
+} & { render(): Render[".mdx"] };
+"tamagachi/index.mdx": {
+	id: "tamagachi/index.mdx";
+  slug: "tamagachi";
   body: string;
   collection: "play";
   data: InferEntrySchema<"play">
