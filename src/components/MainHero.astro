@@ -12,28 +12,40 @@ const svgWidth = 4;
   gsap.registerPlugin(ScrollTrigger);
   gsap.registerPlugin(MotionPathPlugin);
 
-  document.addEventListener("DOMContentLoaded", gsapAnimation);
   //let mainTimeline = gsap.timeline({ paused: true });
-  let titleText = gsap.timeline();
   const trigger = ".animate-text-in";
-  titleText.from(trigger, {
-    scrollTrigger: trigger, // start animation when ".box" enters the viewport
-    y: 200,
-
-    duration: 0.7,
-    ease: "power4.out",
-    stagger: 0.1,
-  });
+  let titleText = gsap.timeline();
 
   //mainTimeline.add(titleText);
   function gsapAnimation() {
-    //  if (mainTimeline.isActive()) return;
-    console.log("animation");
+    if (titleText.isActive()) return;
 
+    //  if (mainTimeline.isActive()) return;
+    titleText.from(trigger, {
+      scrollTrigger: trigger, // start animation when ".box" enters the viewport
+      y: 200,
+
+      duration: 0.7,
+      ease: "power4.out",
+      stagger: 0.1,
+    });
     // mainTimeline.add(titleButtons);
     //mainTimeline.play();
-    titleText.play();
+    console.log("animation");
   }
+  document.addEventListener("DOMContentLoaded", function (event) {
+    // wait until window is loaded - all images, styles-sheets, fonts, links, and other media assets
+    // you could also use addEventListener() instead
+
+    window.addEventListener("load", (event) => {
+      console.log("onload");
+      // OPTIONAL - waits til next tick render to run code (prevents running in the middle of render tick)
+      window.requestAnimationFrame(function () {
+        // GSAP custom code goes here
+        gsapAnimation();
+      });
+    });
+  });
 </script>
 <section
   class="flex flex-col items-center overflow-visible max-w-[100vw] overflow-x-clip leading-none"
