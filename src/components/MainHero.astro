@@ -13,31 +13,26 @@ const svgWidth = 4;
   gsap.registerPlugin(MotionPathPlugin);
 
   document.addEventListener("DOMContentLoaded", gsapAnimation);
-  document.addEventListener("astro:page-load", gsapAnimation);
-  let mainTimeline = gsap.timeline({ paused: true });
+  //let mainTimeline = gsap.timeline({ paused: true });
   let titleText = gsap.timeline();
-  let titleButtons = gsap.timeline();
+  const trigger = ".animate-text-in";
+  titleText.from(trigger, {
+    scrollTrigger: trigger, // start animation when ".box" enters the viewport
+    y: 200,
+
+    duration: 0.7,
+    ease: "power4.out",
+    stagger: 0.1,
+  });
+
+  //mainTimeline.add(titleText);
   function gsapAnimation() {
-    if (mainTimeline.isActive()) return;
+    //  if (mainTimeline.isActive()) return;
     console.log("animation");
 
-    const trigger = ".animate-text-in";
-    titleText.from(
-      trigger,
-      {
-        scrollTrigger: trigger, // start animation when ".box" enters the viewport
-        y: 200,
-
-        duration: 0.7,
-        ease: "power4.out",
-        stagger: 0.1,
-      },
-      0.3
-    );
-
-    mainTimeline.add(titleText);
     // mainTimeline.add(titleButtons);
-    mainTimeline.play();
+    //mainTimeline.play();
+    titleText.play();
   }
 </script>
 <section

@@ -30,13 +30,12 @@ const credits = entry.data.credits ? entry.data.credits : null;
 ---
 
 <head>
-  <ViewTransitions fallback='none' />
   <BaseHead {title} {description} />
 </head>
 <Layout colors={entry.data.colors}>
-  <header class='page-margins mb-4'>
+  <header class="page-margins mb-4">
     <h1
-      class='text-5xl md:text-6xl lg:text-8xl text-center mt-2 mb-4'
+      class="text-5xl md:text-6xl lg:text-8xl text-center mt-2 mb-4"
       transition:name={"title:" + entry.slug}
     >
       {entry.data.title}
@@ -44,28 +43,28 @@ const credits = entry.data.credits ? entry.data.credits : null;
     <ImageRow slug={entry.slug} images={entry.data.heroImages} />
   </header>
 
-  <article class='page-margins mb-24 mt-12 col-2'>
-    <section class='my-6 max-w-3xl mx-auto'>
-      <p lang='en' class='text-2xl md:text-4xl mb-3'>
+  <article class="page-margins mb-24 mt-12 col-2">
+    <section class="my-6 max-w-3xl mx-auto">
+      <p lang="en" class="text-2xl md:text-4xl mb-3">
         {entry.data.description}
       </p>
-      <div class='grid grid-cols-2 md:grid-cols-4 text-sm md:text-base gap-4'>
+      <div class="grid grid-cols-2 md:grid-cols-4 text-sm md:text-base gap-4">
         {
           credits &&
             Object.entries(credits).map(([key, value]) => (
               <div>
-                <p class='opacity-80'>{key}</p>
+                <p class="opacity-80">{key}</p>
                 <p>{value}</p>
               </div>
             ))
         }
       </div>
     </section>
-    <section class='prose w-full'>
+    <section class="prose w-full">
       <Content />
     </section>
   </article>
-  <PostFooter collection='work' postList={allPosts} currentId={entry.id} />
+  <PostFooter collection="work" postList={allPosts} currentId={entry.id} />
 </Layout>
 
 <style lang="postcss" is:global>
