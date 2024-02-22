@@ -30,32 +30,33 @@ import signal from "./signal.svg?raw";
   document.addEventListener("astro:page-load", addContactHandler);
 </script>
 
-<dialog id='contact-form' class='max-w-lg w-full'>
-  <div class='phone'>
-    <header class='flex justify-between items-center px-2 py-1'>
+<dialog id="contact-form" class="max-w-lg w-full">
+  <div class="phone">
+    <header class="flex justify-between items-center px-2 py-1">
       <Fragment set:html={signal} />
       <Fragment set:html={email} />
       <Fragment set:html={battery} />
     </header>
 
-    <div class='content'>
-      <div class='hero'>
-        <h1 class='text-2xl md:text-4xl'>
+    <div class="content">
+      <div class="hero">
+        <h1 class="text-2xl md:text-4xl">
           Simon Zhang is available in the following addresses:
         </h1>
       </div>
       <div></div>
       <div>
-        <form method='dialog'>
-          <h2 id='email-address' class='text-xl lg:text-4xl'></h2>
+        <form method="dialog">
+          <h2 id="email-address" class="text-xl lg:text-4xl"></h2>
           <h2><a href="linkedin.com/in/simonzhangpacific/">linkedin</a></h2>
-          <menu class='mt-6'>
+          <menu class="mt-6">
             <ShinyButton
-              type='submit'
-              value='cancel'
-              width='4rem'
-              height='3rem'
-              radius='0.5rem'
+              type="submit"
+              color="#333333"
+              value="cancel"
+              width="4rem"
+              height="3rem"
+              radius="0.5rem"
             >
               Cancel
             </ShinyButton>

@@ -7,17 +7,37 @@ const svgWidth = 4;
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
   gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(MotionPathPlugin);
 
-  window.onload = function () {
-    console.log("aniamtion");
-    gsap.from(".my-name", {
-      scrollTrigger: ".my-name", // start animation when ".box" enters the viewport
-      y: 100,
-      opacity: 0,
-    });
-  };
+  document.addEventListener("DOMContentLoaded", gsapAnimation);
+  document.addEventListener("astro:page-load", gsapAnimation);
+
+  function gsapAnimation() {
+    console.log("animation");
+    let titleText = gsap.timeline();
+    let titleButtons = gsap.timeline();
+    const trigger = ".animate-text-in";
+    titleText.from(
+      trigger,
+      {
+        // scrollTrigger: trigger, // start animation when ".box" enters the viewport
+        y: 200,
+
+        duration: 0.7,
+        ease: "power4.out",
+        stagger: 0.1,
+      },
+      0.3
+    );
+
+    let mainTimeline = gsap.timeline({ paused: true });
+    mainTimeline.add(titleText);
+    mainTimeline.add(titleButtons);
+    mainTimeline.play();
+  }
 </script>
 <section
   class="flex flex-col items-center overflow-visible max-w-[100vw] overflow-x-clip leading-none"
@@ -35,11 +55,16 @@ const svgWidth = 4;
 
   <h1 class="mainheading text-center">
     <span class="lg:whitespace-nowrap">
-      <span class="my-name whitespace-nowrap inline-block">Simon Zhang</span>
+      <span class="whitespace-nowrap overflow-clip"
+        ><span class="animate-text-in">Simon</span>
+        <span class="animate-text-in"> Zhang</span>
+      </span>
       <br class="lg:hidden" />
-      <span class="inline-block -mr-7 md:-mr-10 lg:-mr-12 z-10 relative">
-        is®</span
+      <span
+        class="inline-block -mr-7 md:-mr-10 lg:-mr-12 z-10 relative overflow-clip"
       >
+        <span class="animate-text-in">is</span>®
+      </span>
       <span
         class="leading-[0] align-middle mx-4 relative inline-flex"
         aria-hidden="true"
@@ -59,11 +84,19 @@ const svgWidth = 4;
               stroke-linecap="round"></path>
           </svg>
         </span>
-        <ShinyButton color="#FFA3F0" width="2.4em" height="0.6em" radius="0" />
+        <ShinyButton
+          color="#FFA3F0"
+          width="2.4em"
+          height="0.6em"
+          radius="0"
+          class="animate-buttonwidth"
+        />
       </span>
-      <span class="-ml-4"> just</span>
+      <span class="-ml-4 overflow-clip">
+        <span class="animate-text-in"> just</span>
+      </span>
     </span>
-    <br class="lg:hidden" />
+    <br class="hidden lg:inline" />
 
     <span class="relative inline-block">
       <span
@@ -71,12 +104,17 @@ const svgWidth = 4;
       >
         <ShinyButton color="#D4BAFF" width="1em" height="2.2em" radius="3em" />
       </span>
-      practicing
+      <span class="overflow-clip">
+        <span class="animate-text-in"> practicing</span>
+      </span>
     </span>
     <br class="lg:hidden" />
 
     <span class="relative inline">
-      design
+      <span class="overflow-clip">
+        <span class="animate-text-in"> design</span>
+      </span>
+
       <span aria-hidden="true" class="absolute -bottom-[0.1em] -right-[0.7em]">
         <svg
           width="0.5em"
@@ -181,5 +219,8 @@ const svgWidth = 4;
         font-size: 15vmin;
         @apply leading-[1.1] lg:text-[14vmin] ;
         max-width: 100vw;
+    }
+    :global(.animate-text-in) {
+      @apply inline-block;
     }
 </style>

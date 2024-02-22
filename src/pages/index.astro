@@ -8,14 +8,14 @@ import { ViewTransitions } from "astro:transitions";
 import BaseHead from "../components/BaseHead.astro";
 import { SITE, ANCHORTAGS } from "../config";
 import ShinyButton from "../components/ShinyButton.astro";
-import pageConfig from './indexConfig.yaml'
+import pageConfig from './indexConfig.yml'
 const { title } = SITE;
 const description = "Simon Zhang is just practicing design";
 
 interface PageConfig {
   funFacts: {
     [key: string]: {
-      link: string
+      href: string
       text: string
     }
   }
@@ -78,22 +78,23 @@ const allPosts = (
   </section>
   <section id="about" class='page-margins py-10 grid grid-cols-1 lg:grid-cols-2 bg-theme-light relative z-10'>
     <div class="lg:col-start-2">
-      <p class='text-3xl lg:text-4xl indent-[3em] max-w-2xl'>
+      <p class='text-2xl md:text-3xl lg:text-4xl indent-[3em] max-w-2xl'>
         simon zhang is a cross-disciplinary designer based in ATL & SEA —
         netscape-oriented with a windows aero slant. Bachlor of Science in Industrial Design from Georgia Tech. Creating intimacy between
         physical and digital products. <span>    
           <button data-contact class="psuedo-link">lets connect <3</button>
         </span>
       </p>
-      <div class='grid grid-cols-2 gap-y-2 gap-x-1 mt-6 max-w-2xl'>
-        {Object.entries(funFacts).map(([title,data]) =>(
-          <p>{title} <br/><a href={data.link} target="_blank">{data.text}</a></p>
+      <div class='grid grid-cols-2 gap-y-4 gap-x-3 mt-6 max-w-2xl'>
+        {Object.entries(funFacts).map(([heading,data]) =>(
+          <p  class="text-sm md:text-base">
+          <span class="opacity-80">{heading} </span>
+          <br/>
+          <a href={data.href} target="_blank">{data.text}</a>
+          </p>
         ))}
       
-        <p>See how this site was built 👀<br /> 
-          <a href="https://github.com/codelastnight/portfolio2">
-          Source Code on Github
-        </a>
+      
       </p>
     </div>
     
