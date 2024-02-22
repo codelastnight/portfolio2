@@ -18,7 +18,7 @@ const svgWidth = 4;
   let titleText = gsap.timeline();
   let titleButtons = gsap.timeline();
   function gsapAnimation() {
-    if (mainTimeline.isActive() || titleText.isActive()) return;
+    if (mainTimeline.isActive()) return;
     console.log("animation");
 
     const trigger = ".animate-text-in";
