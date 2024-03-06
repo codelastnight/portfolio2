@@ -57,7 +57,7 @@ const allPosts = (
     id='work'
   >
     {allPosts?.map((post, index) => 
-      <a href={`/work/${post.slug}`} class="group link-clear md:sticky top-0"  >
+      <a href={`/work/${post.slug}`} class="group link-clear z-20"  >
     <article class='w-full page-margins py-12 bg-theme-light text-theme-dark' style=`--c-light: ${post.data.colors.bg}; --c-dark: ${post.data.colors.fg} `  >
       <header>
         <h1 class='text-center pb-4 '>
