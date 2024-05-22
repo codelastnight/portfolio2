@@ -39,7 +39,7 @@ const allPosts = (
   
 </head>
 <Layout>
-  <div class="md:sticky top-12 page-margins z-[0]">
+  <div class="md:sticky top-12 page-margins z-[0] safari-fix">
     <MainHero />
     <section class='flex flex-col items-center mt-[15vh] ' >
       
@@ -80,7 +80,7 @@ const allPosts = (
       <p class='text-2xl md:text-3xl lg:text-4xl  max-w-2xl ' >
         <span class="inline-block indent-[3em]">simon zhang</span> is a cross-disciplinary designer based in ATL & SEA —
         <span id="funny-caption" class="">  
-          netscape-oriented with a post-aero slant.</span> Bachelor of Science in Industrial Design from Georgia Tech. Creating intimacy between
+          netscape-oriented with a post-aero slant.</span> bachelor of science in industrial design from georgia tech. creating intimacy between
         physical and digital products. <span>    
           <button data-contact class="psuedo-link">lets connect <3</button>
         </span>
@@ -241,5 +241,8 @@ const allPosts = (
     }
     :global(.animate-text-in2 ) {
       @apply inline-block;
+    }
+    .safari-fix {
+      -webkit-transform: translate3d(0, 0, 0);
     }
 </style>
