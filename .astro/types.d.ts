@@ -192,6 +192,13 @@ declare module 'astro:content' {
   collection: "play";
   data: InferEntrySchema<"play">
 } & { render(): Render[".mdx"] };
+"notes/index.mdx": {
+	id: "notes/index.mdx";
+  slug: "notes";
+  body: string;
+  collection: "play";
+  data: InferEntrySchema<"play">
+} & { render(): Render[".mdx"] };
 "saturn-font/index.mdx": {
 	id: "saturn-font/index.mdx";
   slug: "saturn-font";

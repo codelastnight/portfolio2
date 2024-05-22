@@ -77,12 +77,15 @@ const allPosts = (
   </section>
   <section id="about" class='page-margins py-10 grid grid-cols-1 lg:grid-cols-2 bg-theme-light relative z-10'>
     <div class="lg:col-start-2">
-      <p class='text-2xl md:text-3xl lg:text-4xl indent-[3em] max-w-2xl'>
-        simon zhang is a cross-disciplinary designer based in ATL & SEA —
-        netscape-oriented with a windows aero slant. Bachlor of Science in Industrial Design from Georgia Tech. Creating intimacy between
+      <p class='text-2xl md:text-3xl lg:text-4xl  max-w-2xl ' >
+        <span class="inline-block indent-[3em]">simon zhang</span> is a cross-disciplinary designer based in ATL & SEA —
+        <span id="funny-caption" class="">  
+          netscape-oriented with a post-aero slant.</span> Bachelor of Science in Industrial Design from Georgia Tech. Creating intimacy between
         physical and digital products. <span>    
           <button data-contact class="psuedo-link">lets connect <3</button>
         </span>
+      </span>
+     
       </p>
       <div class='grid grid-cols-2 gap-y-4 gap-x-3 mt-6 max-w-2xl'>
         {Object.entries(funFacts).map(([heading,data]) =>(
@@ -98,6 +101,134 @@ const allPosts = (
     </div>
     
     </div>
+    <script>
+
+  import { gsap } from "gsap";
+  import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+
+
+  //let mainTimeline = gsap.timeline({ paused: true });
+  const trigger = ".animate-text-in2";
+  let titleText = gsap.timeline();
+
+  //mainTimeline.add(titleText);
+  function gsapAnimation() {
+    if (titleText.isActive()) return;
+
+    //  if (mainTimeline.isActive()) return;
+    titleText.from(trigger, {
+      y: 50,
+
+      duration: 0.7,
+      ease: "power4.out",
+      stagger: 0.1,
+    });
+    // mainTimeline.add(titleButtons);
+    //mainTimeline.play();
+    console.log("animation");
+  }
+  document.addEventListener("DOMContentLoaded", function (event) {
+    // wait until window is loaded - all images, styles-sheets, fonts, links, and other media assets
+    // you could also use addEventListener() instead
+
+    window.addEventListener("load", (event) => {
+      console.log("onload");
+      // OPTIONAL - waits til next tick render to run code (prevents running in the middle of render tick)
+      window.requestAnimationFrame(function () {
+        // GSAP custom code goes here
+        gsapAnimation();
+      });
+    });
+  });
+
+
+
+      const set1 = [
+        'netscape',
+        'proto-scholastic',
+        'superflat',
+        'degrowth',
+        'soft gen-x',
+        'blob world',
+        'post-aero',
+        'neo-bling',
+        'vectorheart',
+        'acidgraphix',
+        'cyber pomo',
+        'post post post modernism',
+        'all-american suburbia',
+        'bike path',
+        'public transit',
+        'diamond pickaxe',
+        'default cube',
+        'bevel tool',
+        'content-aware fill',
+        'pen tool',
+        'strawberry matcha latte',
+        'extrude face',
+        'duplicate object',
+        'public library',
+        'digicore',
+        'corner radius',
+        'soft grid',
+        'industrial glycine',
+        'galvanized square metal',
+        'frasurbane',
+        'doodle-core',
+        'PBR (peanut butter rendering)',
+        'vocaloid'
+      ]
+  let shuffledCaptionList = shuffleArray(set1);
+  const captionElement = document.getElementById(
+    "funny-caption"
+  ) as HTMLParagraphElement;
+
+  let timeout;
+  let count = 0;
+
+  // shuffledCaptionList.forEach((caption) => {
+  //   const span = document.createElement("span");
+  //   span.innerText = caption;
+  //   captionElement.appendChild(span);
+  // });
+
+  // new caption every some seconds
+ const timer = 5000
+  timeout = setTimeout(function tick() {
+     if (count == 0) shuffledCaptionList = shuffleArray(set1);
+     count = (count + 2) % shuffledCaptionList.length; // loop thru array
+     const count1 = (count + 1) % shuffledCaptionList.length;
+    //count = Math.floor(Math.random() * shuffledCaptionList.length);
+    const text = `${shuffledCaptionList[count]} oriented with a${"aeiou".includes(shuffledCaptionList[count1][0]) ? 'n' : '' } ${shuffledCaptionList[count1]} slant.`
+    captionElement.innerText = '';
+    text.split(' ').forEach((word)=> {
+      const spanouter = document.createElement("span");
+      const span = document.createElement("span");
+   
+    spanouter.className = 'text-hide'
+    span.innerText = word + " ";
+    span.className = 'animate-text-in2'
+    spanouter.appendChild(span)
+    
+    captionElement.appendChild(spanouter);
+    captionElement.innerHTML += " ";
+    })
+
+      window.requestAnimationFrame(function () {
+        // GSAP custom code goes here
+        gsapAnimation();
+      });
+    timeout = setTimeout(tick, timer);
+  }, timer);
+
+  function shuffleArray(array: string[]) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+      </script>
   </section>
 </Layout>
 
@@ -105,5 +236,10 @@ const allPosts = (
   .psuedo-link {
     @apply underline hover:bg-theme-dark hover:text-theme-light;
   }
- 
+  :global(.text-hide) {
+      @apply inline-block overflow-hidden align-bottom;
+    }
+    :global(.animate-text-in2 ) {
+      @apply inline-block;
+    }
 </style>
