@@ -164,6 +164,13 @@ declare module 'astro:content' {
   collection: "play";
   data: InferEntrySchema<"play">
 } & { render(): Render[".mdx"] };
+"digicam-synth/index.mdx": {
+	id: "digicam-synth/index.mdx";
+  slug: "digicam-synth";
+  body: string;
+  collection: "play";
+  data: InferEntrySchema<"play">
+} & { render(): Render[".mdx"] };
 "ess/index.mdx": {
 	id: "ess/index.mdx";
   slug: "ess";
