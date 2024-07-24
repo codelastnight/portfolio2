@@ -25,7 +25,7 @@ const videoSrc = await checkpath(folder, src);
 ---
 
 <video
-  class='lazy'
+  class="lazy"
   autoplay
   muted
   loop
@@ -34,7 +34,7 @@ const videoSrc = await checkpath(folder, src);
   width={posterImg.width}
   height={posterImg.height}
 >
-  <source data-src={videoSrc} type='video/mp4' />
+  <source data-src={videoSrc} type="video/mp4" />
 </video>
 
 <script>
@@ -59,7 +59,7 @@ const videoSrc = await checkpath(folder, src);
               )
                 videoSource.src = videoSource.dataset.src;
             }
-
+            //@ts-ignore
             video.target.load();
             video.target.classList.remove("lazy");
             lazyVideoObserver.unobserve(video.target);
