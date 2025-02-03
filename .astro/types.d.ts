@@ -257,16 +257,16 @@ declare module 'astro:content' {
   collection: "work";
   data: InferEntrySchema<"work">
 } & { render(): Render[".mdx"] };
-"futureofwork/index.mdx": {
-	id: "futureofwork/index.mdx";
-  slug: "futureofwork";
+"loopie-laundry/index.mdx": {
+	id: "loopie-laundry/index.mdx";
+  slug: "loopie-laundry";
   body: string;
   collection: "work";
   data: InferEntrySchema<"work">
 } & { render(): Render[".mdx"] };
-"loopie-laundry/index.mdx": {
-	id: "loopie-laundry/index.mdx";
-  slug: "loopie-laundry";
+"multiplayerdashboard/index.mdx": {
+	id: "multiplayerdashboard/index.mdx";
+  slug: "multiplayerdashboard";
   body: string;
   collection: "work";
   data: InferEntrySchema<"work">
