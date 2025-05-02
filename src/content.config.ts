@@ -1,7 +1,12 @@
 import { defineCollection, z } from "astro:content";
 
+// 2. Import loader(s)
+import { glob, file } from 'astro/loaders';
+
+
 const work = defineCollection({
   // Type-check frontmatter using a schema
+  loader: glob({ pattern: "**/*.mdx", base: "src/content/work" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -14,9 +19,7 @@ const work = defineCollection({
       heroImages: z
         .record(
           z.string(),
-          image().refine((img) => img.width >= 200, {
-            message: "Cover image gotta be 300 pixels wide you goober",
-          })
+          image()
         )
         .optional(),
       tags: z.array(z.string()).optional(),
@@ -34,7 +37,7 @@ const work = defineCollection({
 });
 
 const play = defineCollection({
-  // Type-check frontmatter using a schema
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/play" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -46,9 +49,7 @@ const play = defineCollection({
       heroImages: z
         .record(
           z.string(),
-          image().refine((img) => img.width >= 200, {
-            message: "Cover image gotta be 300 pixels wide you goober",
-          })
+          image()
         )
         .optional(),
       tags: z.array(z.string()).optional(),

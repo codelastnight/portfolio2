@@ -1,24 +1,22 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import { ViewTransitions } from "astro:transitions";
-import { SITE } from "../../config";
-import BaseHead from "../../components/BaseHead.astro";
-import { getFirst } from "./helper";
-import PostFooter from "../../components/PostFooter.astro";
+import { getCollection, render } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import { SITE } from "@/config";
+import BaseHead from "@/components/BaseHead.astro";
+import PostFooter from "@/components/PostFooter.astro";
 
 // // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const blogEntries = await getCollection("play");
   return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
 // 2. For your template, you can get the entry directly from the prop
 const { entry } = Astro.props;
 
-const { Content, headings } = await entry.render();
+const { Content, headings } = await render(entry);
 
 const allPosts = (
   await getCollection("play", ({ data }) => {
@@ -34,33 +32,33 @@ const credits = entry.data.credits ? entry.data.credits : null;
   <BaseHead {title} {description} />
 </head>
 <Layout colors={entry.data.colors}>
-  <header class='page-margins mb-4'>
+  <header class="page-margins mb-4">
     <h1
-      class='text-4xl lg:text-8xl text-center mt-2 mb-4'
-      transition:name={"title:" + entry.slug}
+      class="text-4xl lg:text-8xl text-center mt-2 mb-4"
+      transition:name={"title:" + entry.id}
     >
       {entry.data.title}
     </h1>
   </header>
 
-  <article class='page-margins mx-auto my-3 mt-12 col-2 md:flex gap-6 relative'>
-    <section class='max-w-prose md:w-md lg:w-md md:sticky top-[1em] self-start'>
-      <p lang='en' class='lg:text-lg mb-3 md:w-[27ch] lg:w-[30ch] mt-3'>
+  <article class="page-margins mx-auto my-3 mt-12 col-2 md:flex gap-6 relative">
+    <section class="max-w-prose md:w-md lg:w-md md:sticky top-[1em] self-start">
+      <p lang="en" class="lg:text-lg mb-3 md:w-[27ch] lg:w-[30ch] mt-3">
         {entry.data.description}
       </p>
-      <div class='grid grid-cols-2 text-sm lg:text-base gap-4'>
+      <div class="grid grid-cols-2 text-sm lg:text-base gap-4">
         {
           credits &&
             Object.entries(credits).map(([key, value]) => (
               <div>
-                <p class='opacity-80'>{key}</p>
+                <p class="opacity-80">{key}</p>
                 <p>{value}</p>
               </div>
             ))
         }
       </div>
     </section>
-    <section class='prose grid grid-cols-1 gap-x-4 gap-y-3'>
+    <section class="prose grid grid-cols-1 gap-x-4 gap-y-3">
       <!-- {
         getFirst(entry.data.heroImages, (img) => (
           <img
@@ -76,7 +74,7 @@ const credits = entry.data.credits ? entry.data.credits : null;
     </section>
   </article>
 
-  <PostFooter collection='play' postList={allPosts} currentId={entry.id} />
+  <PostFooter collection="play" postList={allPosts} currentId={entry.id} />
 </Layout>
 
 <style lang="postcss" is:global>

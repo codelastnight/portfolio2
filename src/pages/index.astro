@@ -4,11 +4,10 @@ import Layout from "../layouts/Layout.astro";
 
 import MainHero from "../components/MainHero.astro";
 import ImageRow from "../components/ImageRow.astro";
-import { ViewTransitions } from "astro:transitions";
 import BaseHead from "../components/BaseHead.astro";
 import { SITE, ANCHORTAGS } from "../config";
 import ShinyButton from "../components/ShinyButton.astro";
-import pageConfig from './indexConfig.yml'
+import pageConfig from './_indexConfig.yml'
 const { title } = SITE;
 const description = "Simon Zhang is just practicing design";
 
@@ -56,15 +55,15 @@ const allPosts = (
     id='work'
   >
     {allPosts?.map((post, index) => 
-      <a href={`/work/${post.slug}`} class="group link-clear z-20"  >
+      <a href={`/work/${post.id}`} class="group link-clear z-20"  >
     <article class='w-full page-margins py-12 bg-theme-light text-theme-dark' style=`--c-light: ${post.data.colors.bg}; --c-dark: ${post.data.colors.fg} `  >
       <header>
         <h1 class='text-center pb-4 '>
           <span class='block'>Case Study {index}:</span>
-          <span class='block text-4xl md:text-5xl group-hover:underline' transition:name={"title:"+post.slug}>{post.data.title}</span>
+          <span class='block text-4xl md:text-5xl group-hover:underline' transition:name={"title:"+post.id}>{post.data.title}</span>
         </h1>
       </header>
-      <ImageRow images={post.data.heroImages}  slug={post.slug} class="" />
+      <ImageRow images={post?.data?.heroImages}  slug={post.id} class="" />
       <footer class='flex justify-between flex-col md:flex-row mt-2 gap-2 leading-tight'>
         <p class='text-sm md:text-base max-w-md flex-shrink'>{post.data.description}</p>
         <ShinyButton height="4em" width="13em" color={post.data.colors.fg} class='self-center min-w-[7em]'>
@@ -82,7 +81,7 @@ const allPosts = (
         <span id="funny-caption" class="">  
           netscape-oriented with a post-aero slant.</span> bachelor of science in industrial design from georgia tech. creating intimacy between
         physical and digital products. <span>    
-          <button data-contact class="psuedo-link">lets connect <3</button>
+          <button data-contact class="psuedo-link">lets connect {'<3'}</button>
         </span>
       </span>
      
@@ -95,7 +94,6 @@ const allPosts = (
           <a href={data.href} target="_blank">{data.text}</a>
           </p>
         ))}
-      
       
       </p>
     </div>

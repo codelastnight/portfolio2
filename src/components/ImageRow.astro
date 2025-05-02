@@ -1,43 +1,57 @@
 ---
 interface image {
-    width?: number
-    height?: number
-    src?: string
-    format?: any
+  width?: number;
+  height?: number;
+  src?: string;
+  format?: any;
 }
 
 interface Props {
-  images: {[key:string]: image}
-  slug?: string
-  class?: string
+  images?: Record<string, image>;
+  slug?: string;
+  class?: string;
 }
 
-const {slug, images, class:astroClass} = Astro.props;
-const spacing = 16
-const fullWidth = Object.entries(images).reduce(
-  (accumulator, currentImage, index) => {
+const { slug, images, class: astroClass } = Astro.props;
+const spacing = 16;
+
+if (!images)
+  throw "this should not error. there is an issue with your work content collection";
+
+const fullWidth = getFullWidth(images);
+
+function getFullWidth(imgList: { [key: string]: image }) {
+  if (!imgList) return 0;
+
+  return Object.entries(imgList).reduce((accumulator, currentImage, index) => {
     const addSpace = index !== 0 ? spacing : 0;
-    return accumulator + currentImage[1].width + addSpace
-  }
-    ,
-  0,
-);
+    const width = currentImage[1]?.width || 0;
+    return accumulator + width + addSpace;
+  }, 0);
+}
+
+// take number and return 0 if undefined
+const fallback = (a: number | undefined) => a || 0;
 ---
 
-
-  <div class='w-full img-preview flex flex-col md:flex-row justify-between gap-y-1' transition:name={"images:"+slug}  >
-    {Object.entries(images).map((img)=> 
+<div
+  class="w-full img-preview flex flex-col md:flex-row justify-between gap-y-1"
+  transition:name={"images:" + slug}
+>
+  {
+    Object.entries(images).map((img) => (
       <img
-      src={img[1].src}
-      alt={img[0]}
-      height={img[1].height}
-      width={img[1].width}
-      loading="lazy"
-      class={astroClass}
-      style=`aspect-ratio:${img[1].width} / ${img[1].height}; --img-preview-width: ${(img[1].width/fullWidth)*100}%`
-    />)}
-  </div>
-
+        src={img[1].src}
+        alt={img[0]}
+        height={img[1].height}
+        width={img[1].width}
+        loading="lazy"
+        class={astroClass}
+        style={`aspect-ratio:${img[1].width} / ${img[1].height}; --img-preview-width: ${(fallback(img[1].width) / fullWidth) * 100}%`}
+      />
+    ))
+  }
+</div>
 
 <style lang="postcss">
   .img-preview img{
