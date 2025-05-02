@@ -72,8 +72,19 @@ const credits = entry.data.credits ? entry.data.credits : null;
     @apply mx-auto max-w-3xl leading-relaxed lg:leading-relaxed  mb-4 text-sm md:text-base lg:text-lg;
   }
   .paragraph-image {
-    @apply mx-auto max-w-6xl mt-20 mb-20;
+    @apply max-w-6xl mx-auto;
   }
+  .prose > .paragraph-image {
+    @apply mx-auto my-12 lg:my-20;
+  }
+  .paragraph-image:first-child {
+    @apply mt-0;
+  }
+
+  .paragraph-image:last-child {
+    @apply mb-0;
+  }
+
   .paragraph-image img {
     @apply mx-auto;
   }
