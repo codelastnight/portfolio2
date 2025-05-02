@@ -6,7 +6,7 @@ import { glob, file } from 'astro/loaders';
 
 const work = defineCollection({
   // Type-check frontmatter using a schema
-  loader: glob({ pattern: "**/*.mdx", base: "src/content/work" }),
+  loader: glob({ pattern: "**/*.mdx", base: "content/work" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -37,7 +37,7 @@ const work = defineCollection({
 });
 
 const play = defineCollection({
-  loader: glob({ pattern: "**/*.mdx", base: "./src/content/play" }),
+  loader: glob({ pattern: "**/*.mdx", base: "content/play" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),

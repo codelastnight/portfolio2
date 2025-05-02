@@ -6,18 +6,17 @@ interface Props {
 }
 const { placeholderImg, src, folder } = Astro.props;
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/content/**/*.{jpg,mp4}"
+  "/content/**/*.{jpg,mp4}"
 );
-console.log(`/src/content/${folder}/${src}`);
 async function checkpath(contentFolder: string, path: string) {
   if (!path) throw new Error("path is undefined");
   if (path.startsWith("./")) path.replace("./", "");
 
-  if (!images[`/src/content/${folder}/${path}`])
+  if (!images[`/content/${folder}/${path}`])
     throw new Error(
-      `"${src}" does not exist in glob: "src/images/*.{jpeg,jpg,png,gif}"`
+      `"${src}" does not exist in glob: "content/*.{jpeg,jpg,png,gif,mp4}"`
     );
-  return (await images[`/src/content/${contentFolder}/${path}`]()).default;
+  return (await images[`/content/${contentFolder}/${path}`]()).default;
 }
 
 const posterImg = await checkpath(folder, placeholderImg);
