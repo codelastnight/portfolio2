@@ -6,7 +6,7 @@ const year = new Date().getFullYear(); // copyriht for latest time that webpage 
 
 <footer
   class="page-margins"
-  style="--c-light: var(--c-bg); --c-dark: var(--c-fg); "
+  style="--color-theme-light: var(--c-bg); --color-theme-dark: var(--c-fg); "
 >
   <a href=`#${ANCHORTAGS.topOfPage}`>back to top</a>
   <svg
@@ -40,12 +40,14 @@ const year = new Date().getFullYear(); // copyriht for latest time that webpage 
   document.addEventListener("astro:page-load", onPageLoad);
 </script>
 <style lang="postcss">
+  @reference '@/global.css';
+
   footer {
     @apply bg-theme-dark text-theme-light pb-12 pt-6;
   }
   a {
-    --c-light: var(--c-fg);
-    --c-dark: var(--c-bg);
+    --color-theme-light: var(--c-fg);
+    --color-theme-dark: var(--c-bg);
   }
   .loading-in-cover {
     @apply fixed inset-0 z-50 bg-theme-light pointer-events-none transition duration-500;

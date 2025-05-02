@@ -1,7 +1,7 @@
 import { defineConfig, passthroughImageService } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
 import mdx from '@astrojs/mdx';
 import yaml from '@rollup/plugin-yaml';
+import tailwindcss from "@tailwindcss/vite";
 
 import { selectAll } from 'unist-util-select';
 
@@ -11,13 +11,13 @@ export default defineConfig({
   // image: {
   //   service: passthroughImageService(),
   // },
-  integrations: [mdx(), tailwind()],
+  integrations: [mdx()],
   markdown: {
     // Applied to .md and .mdx files
     remarkPlugins: [myRemarkPlugin],
   },
   vite: {
-    plugins: [yaml()]
+    plugins: [yaml(),tailwindcss()]
   }
 });
 

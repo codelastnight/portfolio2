@@ -19,7 +19,7 @@ const { colors } = Astro.props;
 // doesnt cascade it seems
 const colorsStyles = colors
   ? `--c-bg: ${colors.bg};  ${colors.fg ? "--c-fg: " + colors.fg : ""}` +
-    ";--c-light: var(--c-bg); --c-dark: var(--c-fg); "
+    ";--color-theme-light: var(--c-bg); --color-theme-dark: var(--c-fg); "
   : "";
 
 const anim = {

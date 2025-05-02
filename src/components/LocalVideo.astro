@@ -9,7 +9,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/content/**/*.{jpg,mp4}"
 );
 console.log(`/src/content/${folder}/${src}`);
-async function checkpath(contentFolder, path: string) {
+async function checkpath(contentFolder: string, path: string) {
   if (!path) throw new Error("path is undefined");
   if (path.startsWith("./")) path.replace("./", "");
 

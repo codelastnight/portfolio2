@@ -56,7 +56,7 @@ const allPosts = (
   >
     {allPosts?.map((post, index) => 
       <a href={`/work/${post.id}`} class="group link-clear z-20"  >
-    <article class='w-full page-margins py-12 bg-theme-light text-theme-dark' style=`--c-light: ${post.data.colors.bg}; --c-dark: ${post.data.colors.fg} `  >
+    <article class='w-full page-margins py-12 bg-theme-light text-theme-dark' style=`--color-theme-light: ${post.data.colors.bg}; --color-theme-dark: ${post.data.colors.fg} `  >
       <header>
         <h1 class='text-center pb-4 '>
           <span class='block'>Case Study {index}:</span>
@@ -231,6 +231,8 @@ const allPosts = (
 </Layout>
 
 <style lang="postcss">
+  @reference '@/global.css';
+
   .psuedo-link {
     @apply underline hover:bg-theme-dark hover:text-theme-light;
   }

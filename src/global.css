@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-theme-light: var(--c-light);
+  --color-theme-dark: var(--c-dark);
+  --font-sans: "Neue Montreal", "ui-sans-serif", "system-ui", "sans-serif";
+}
+
+@layer components {
+  a:not(.link-clear),
+  .link {
+    color: var(--color-theme-dark);
+    text-decoration: underline;
+    background: var(--color-theme-light);
+  }
+
+  a:not(.link-clear):hover,
+  .link:hover {
+    color: var(--color-theme-light);
+    background: var(--color-theme-dark);
+  }
+
+  .page-margins {
+    paddingleft: var(--spacing-4);
+    paddingright: var(--spacing-4);
+  }
+}
+
+@font-face {
+  font-family: "Neue Montreal";
+  src: local("PP Neue Montreal"), local("Neue Montreal"),
+    url("/assets/PPNeueMontreal-Medium.woff2");
+  font-display: swap;
+}
+:root {
+  --c-bg: #f0ebf6;
+  --c-fg: #0500e1;
+  /* // abstraction to allow flipping colors */
+  --c-light: var(--c-bg);
+  --c-dark: var(--c-fg);
+}
+
+body {
+  @apply bg-theme-light text-theme-dark font-sans;
+}

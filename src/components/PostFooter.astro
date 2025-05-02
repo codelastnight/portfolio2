@@ -12,7 +12,7 @@ const { collection, postList, currentId } = Astro.props;
 const linkId = collection === "play" ? "after-hours" : collection;
 
 function setColors(fg: string, bg: string) {
-  return `--c-light: ${bg}; --c-dark: ${fg} `;
+  return `--color-theme-light: ${bg}; --color-theme-dark: ${fg} `;
 }
 ---
 
@@ -39,6 +39,8 @@ function setColors(fg: string, bg: string) {
   }
 </footer>
 <style lang="postcss">
+  @reference '@/global.css';
+
   .directory {
     @apply py-12  border-theme-dark block;
     @apply text-3xl md:text-5xl ;
