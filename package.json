@@ -19,10 +19,10 @@
     "sharp": "^0.32.6",
     "tailwindcss": "^4.1.5",
     "typescript": "^5.2.2",
-    "unist-util-select": "^5.1.0"
+    "unist-util-select": "^5.1.0",
+    "@tailwindcss/vite": "^4.1.5"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.5",
     "gsap": "^3.12.5"
   },
   "pnpm": {

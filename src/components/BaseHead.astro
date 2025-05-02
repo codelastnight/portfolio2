@@ -26,16 +26,15 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
   type="font/woff"
   crossorigin
 />
-<style is:global lang="postcss">
+<style is:global>
   @reference '@/global.css';
- 
+
   img {
     @apply transition  duration-500;
   }
   .img-preloader {
     @apply opacity-0;
   }
-  
 </style>
 <noscript>
   <style>

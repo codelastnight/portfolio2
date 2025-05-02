@@ -34,12 +34,12 @@ const year = new Date().getFullYear(); // copyriht for latest time that webpage 
   function onPageLoad() {
     const element = document.getElementById("loading-in");
 
-    element.setAttribute("data-loaded", "");
+    element?.setAttribute("data-loaded", "");
   }
   document.addEventListener("DOMContentLoaded", onPageLoad);
   document.addEventListener("astro:page-load", onPageLoad);
 </script>
-<style lang="postcss">
+<style>
   @reference '@/global.css';
 
   footer {

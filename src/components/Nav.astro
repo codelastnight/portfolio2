@@ -15,23 +15,22 @@ const isHome = Astro.url.pathname === "/";
   </div>
 </nav>
 
-<style lang="postcss">
+<style>
   @reference '@/global.css';
 
-    nav {
-        @apply sticky py-3 top-0 flex justify-between md:justify-center md:gap-10;
-        @apply z-50;
-    }
-    nav>div {
-      @apply flex gap-4 md:gap-10;
-    }
-    nav a {
-      @apply inline px-1 py-0 -mx-1 -my-0;
-      
-    }
-    .psuedo-link {
-      @apply bg-theme-light text-theme-dark;
-      @apply underline inline px-1 py-0 -mx-1 -my-0;
-      @apply hover:bg-theme-dark hover:text-theme-light;
-    }
+  nav {
+    @apply sticky py-3 top-0 flex justify-between md:justify-center md:gap-10;
+    @apply z-50;
+  }
+  nav > div {
+    @apply flex gap-4 md:gap-10;
+  }
+  nav a {
+    @apply inline px-1 py-0 -mx-1 -my-0;
+  }
+  .psuedo-link {
+    @apply bg-theme-light text-theme-dark;
+    @apply underline inline px-1 py-0 -mx-1 -my-0;
+    @apply hover:bg-theme-dark hover:text-theme-light;
+  }
 </style>

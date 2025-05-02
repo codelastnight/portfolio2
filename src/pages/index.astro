@@ -7,20 +7,19 @@ import ImageRow from "../components/ImageRow.astro";
 import BaseHead from "../components/BaseHead.astro";
 import { SITE, ANCHORTAGS } from "../config";
 import ShinyButton from "../components/ShinyButton.astro";
-import pageConfig from './_indexConfig.yml'
+import pageConfig from "./_indexConfig.yml";
 const { title } = SITE;
 const description = "Simon Zhang is just practicing design";
 
 interface PageConfig {
   funFacts: {
     [key: string]: {
-      href: string
-      text: string
-    }
-  }
+      href: string;
+      text: string;
+    };
+  };
 }
-const funFacts = (pageConfig as PageConfig).funFacts
-
+const funFacts = (pageConfig as PageConfig).funFacts;
 
 // Data Fetching: List all Markdown posts in the repo.
 
@@ -33,77 +32,100 @@ const allPosts = (
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 ---
+
 <head>
   <BaseHead {title} {description} />
-  
 </head>
 <Layout>
-  <div class="md:sticky top-12 page-margins z-[0] safari-fix-bottom ">
+  <div class="md:sticky top-12 page-margins z-[0] safari-fix-bottom">
     <MainHero />
-    <section class='flex flex-col items-center mt-[15vh] ' >
-      
+    <section class="flex flex-col items-center mt-[15vh]">
       <p class="text-center">
-        Graphic designer and Web developer <a href="/after-hours">in the evening</a>
+        Graphic designer and Web developer <a href="/after-hours"
+          >in the evening</a
+        >
       </p>
     </section>
   </div>
-  
 
   <section
-    aria-label='Blog post list'
-    class='flex flex-col items-center mt-12 safari-fix'
-    id='work'
+    aria-label="Blog post list"
+    class="flex flex-col items-center mt-12 safari-fix"
+    id="work"
   >
-    {allPosts?.map((post, index) => 
-      <a href={`/work/${post.id}`} class="group link-clear z-20"  >
-    <article class='w-full page-margins py-12 bg-theme-light text-theme-dark' style=`--color-theme-light: ${post.data.colors.bg}; --color-theme-dark: ${post.data.colors.fg} `  >
-      <header>
-        <h1 class='text-center pb-4 '>
-          <span class='block'>Case Study {index}:</span>
-          <span class='block text-4xl md:text-5xl group-hover:underline' transition:name={"title:"+post.id}>{post.data.title}</span>
-        </h1>
-      </header>
-      <ImageRow images={post?.data?.heroImages}  slug={post.id} class="" />
-      <footer class='flex justify-between flex-col md:flex-row mt-2 gap-2 leading-tight'>
-        <p class='text-sm md:text-base max-w-md flex-shrink'>{post.data.description}</p>
-        <ShinyButton height="4em" width="13em" color={post.data.colors.fg} class='self-center min-w-[7em]'>
-           <span class="text-theme-light text-center">View Full Case Study</span>
-        </ShinyButton>
-      </footer>
-    </article>          
-    </a>
-)}
+    {
+      allPosts?.map((post, index) => (
+        <a href={`/work/${post.id}`} class="group link-clear z-20">
+          <article
+            class="w-full page-margins py-12 bg-theme-light text-theme-dark"
+            style={`--color-theme-light: ${post.data.colors.bg}; --color-theme-dark: ${post.data.colors.fg} `}
+          >
+            <header>
+              <h1 class="text-center pb-4 ">
+                <span class="block">Case Study {index}:</span>
+                <span
+                  class="block text-4xl md:text-5xl group-hover:underline"
+                  transition:name={"title:" + post.id}
+                >
+                  {post.data.title}
+                </span>
+              </h1>
+            </header>
+            <ImageRow images={post?.data?.heroImages} slug={post.id} class="" />
+            <footer class="flex justify-between flex-col md:flex-row mt-2 gap-2 leading-tight">
+              <p class="text-sm md:text-base max-w-md flex-shrink">
+                {post.data.description}
+              </p>
+              <ShinyButton
+                height="4em"
+                width="13em"
+                color={post.data.colors.fg}
+                class="self-center min-w-[7em]"
+              >
+                <span class="text-theme-light text-center">
+                  View Full Case Study
+                </span>
+              </ShinyButton>
+            </footer>
+          </article>
+        </a>
+      ))
+    }
   </section>
-  <section id="about" class='page-margins py-10 grid grid-cols-1 lg:grid-cols-2 bg-theme-light relative z-10 safari-fix'>
+  <section
+    id="about"
+    class="page-margins py-10 grid grid-cols-1 lg:grid-cols-2 bg-theme-light relative z-10 safari-fix"
+  >
     <div class="lg:col-start-2">
-      <p class='text-2xl md:text-3xl lg:text-4xl  max-w-2xl ' >
-        <span class="inline-block indent-[3em]">simon zhang</span> is a cross-disciplinary designer based in ATL & SEA —
-        <span id="funny-caption" class="">  
-          netscape-oriented with a post-aero slant.</span> bachelor of science in industrial design from georgia tech. creating intimacy between
-        physical and digital products. <span>    
-          <button data-contact class="psuedo-link">lets connect {'<3'}</button>
+      <p class="text-2xl md:text-3xl lg:text-4xl max-w-2xl">
+        <span class="inline-block indent-[3em]">simon zhang</span> is a cross-disciplinary
+        designer based in ATL & SEA —
+        <span id="funny-caption" class="">
+          netscape-oriented with a post-aero slant.</span
+        > bachelor of science in industrial design from georgia tech. creating intimacy
+        between physical and digital products. <span>
+          <button data-contact class="psuedo-link">lets connect {"<3"}</button>
         </span>
-      </span>
-     
       </p>
-      <div class='grid grid-cols-2 gap-y-4 gap-x-3 mt-6 max-w-2xl'>
-        {Object.entries(funFacts).map(([heading,data]) =>(
-          <p  class="text-sm md:text-base">
-          <span class="opacity-80">{heading} </span>
-          <br/>
-          <a href={data.href} target="_blank">{data.text}</a>
+    </div>
+    <div class="lg:col-start-2 grid grid-cols-2 gap-y-4 gap-x-3 mt-6 max-w-2xl">
+      {
+        Object.entries(funFacts).map(([heading, data]) => (
+          <p class="text-sm md:text-base">
+            <span class="opacity-80">{heading} </span>
+            <br />
+            <a href={data.href} target="_blank">
+              {data.text}
+            </a>
           </p>
-        ))}
-      
-      </p>
+        ))
+      }
     </div>
-    
-    </div>
-    <script>
-
+  </section>
+</Layout>
+<script>
   import { gsap } from "gsap";
   import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-
 
   //let mainTimeline = gsap.timeline({ paused: true });
   const trigger = ".animate-text-in2";
@@ -139,43 +161,41 @@ const allPosts = (
     });
   });
 
-
-
-      const set1 = [
-        'netscape',
-        'proto-scholastic',
-        'superflat',
-        'degrowth',
-        'soft gen-x',
-        'blob world',
-        'post-aero',
-        'neo-bling',
-        'vectorheart',
-        'acidgraphix',
-        'cyber pomo',
-        'post post post modernism',
-        'all-american suburbia',
-        'bike path',
-        'public transit',
-        'diamond pickaxe',
-        'default cube',
-        'bevel tool',
-        'content-aware fill',
-        'pen tool',
-        'strawberry matcha latte',
-        'extrude face',
-        'duplicate object',
-        'public library',
-        'digicore',
-        'corner radius',
-        'soft grid',
-        'industrial glycine',
-        'galvanized square metal',
-        'frasurbane',
-        'doodle-core',
-        'PBR (peanut butter rendering)',
-        'vocaloid'
-      ]
+  const set1 = [
+    "netscape",
+    "proto-scholastic",
+    "superflat",
+    "degrowth",
+    "soft gen-x",
+    "blob world",
+    "post-aero",
+    "neo-bling",
+    "vectorheart",
+    "acidgraphix",
+    "cyber pomo",
+    "post post post modernism",
+    "all-american suburbia",
+    "bike path",
+    "public transit",
+    "diamond pickaxe",
+    "default cube",
+    "bevel tool",
+    "content-aware fill",
+    "pen tool",
+    "strawberry matcha latte",
+    "extrude face",
+    "duplicate object",
+    "public library",
+    "digicore",
+    "corner radius",
+    "soft grid",
+    "industrial glycine",
+    "galvanized square metal",
+    "frasurbane",
+    "doodle-core",
+    "PBR (peanut butter rendering)",
+    "vocaloid",
+  ];
   let shuffledCaptionList = shuffleArray(set1);
   const captionElement = document.getElementById(
     "funny-caption"
@@ -191,31 +211,31 @@ const allPosts = (
   // });
 
   // new caption every some seconds
- const timer = 5000
+  const timer = 5000;
   timeout = setTimeout(function tick() {
-     if (count == 0) shuffledCaptionList = shuffleArray(set1);
-     count = (count + 2) % shuffledCaptionList.length; // loop thru array
-     const count1 = (count + 1) % shuffledCaptionList.length;
+    if (count == 0) shuffledCaptionList = shuffleArray(set1);
+    count = (count + 2) % shuffledCaptionList.length; // loop thru array
+    const count1 = (count + 1) % shuffledCaptionList.length;
     //count = Math.floor(Math.random() * shuffledCaptionList.length);
-    const text = `${shuffledCaptionList[count]} oriented with a${"aeiou".includes(shuffledCaptionList[count1][0]) ? 'n' : '' } ${shuffledCaptionList[count1]} slant.`
-    captionElement.innerText = '';
-    text.split(' ').forEach((word)=> {
+    const text = `${shuffledCaptionList[count]} oriented with a${"aeiou".includes(shuffledCaptionList[count1][0]) ? "n" : ""} ${shuffledCaptionList[count1]} slant.`;
+    captionElement.innerText = "";
+    text.split(" ").forEach((word) => {
       const spanouter = document.createElement("span");
       const span = document.createElement("span");
-   
-    spanouter.className = 'text-hide'
-    span.innerText = word + " ";
-    span.className = 'animate-text-in2'
-    spanouter.appendChild(span)
-    
-    captionElement.appendChild(spanouter);
-    captionElement.innerHTML += " ";
-    })
 
-      window.requestAnimationFrame(function () {
-        // GSAP custom code goes here
-        gsapAnimation();
-      });
+      spanouter.className = "text-hide";
+      span.innerText = word + " ";
+      span.className = "animate-text-in2";
+      spanouter.appendChild(span);
+
+      captionElement.appendChild(spanouter);
+      captionElement.innerHTML += " ";
+    });
+
+    window.requestAnimationFrame(function () {
+      // GSAP custom code goes here
+      gsapAnimation();
+    });
     timeout = setTimeout(tick, timer);
   }, timer);
 
@@ -226,27 +246,24 @@ const allPosts = (
     }
     return array;
   }
-      </script>
-  </section>
-</Layout>
+</script>
 
-<style lang="postcss">
+<style>
   @reference '@/global.css';
 
   .psuedo-link {
     @apply underline hover:bg-theme-dark hover:text-theme-light;
   }
   :global(.text-hide) {
-      @apply inline-block overflow-hidden align-bottom;
-    }
-    :global(.animate-text-in2 ) {
-      @apply inline-block;
-    }
-    .safari-fix {
+    @apply inline-block overflow-hidden align-bottom;
+  }
+  :global(.animate-text-in2) {
+    @apply inline-block;
+  }
+  .safari-fix {
     transform: translate3d(0, 0, 100px);
-}
-    .safari-fix-bottom {
-      transform: translate3d(0, 0, 0px);
-    }
-
+  }
+  .safari-fix-bottom {
+    transform: translate3d(0, 0, 0px);
+  }
 </style>

@@ -213,23 +213,22 @@ const svgWidth = 4;
   </svg>
 </section>
 
-<style lang="postcss">
+<style>
   @reference '@/global.css';
 
-    section {
-        @apply px-3;
-        //box-shadow: inset 0 0 1rem var(--c-dark);
-
-    }
-    .mainheading {
-        font-size: 15vmin;
-        @apply lg:text-[14vmin] ;
-        max-width: 100vw;
-    }
-    :global(.animate-text-in) {
-      @apply inline-block;
-    }
-    .text-hide {
-      @apply inline-block overflow-hidden py-1;
-    }
+  section {
+    @apply px-3;
+    //box-shadow: inset 0 0 1rem var(--c-dark);
+  }
+  .mainheading {
+    font-size: 15vmin;
+    @apply lg:text-[14vmin];
+    max-width: 100vw;
+  }
+  :global(.animate-text-in) {
+    @apply inline-block;
+  }
+  .text-hide {
+    @apply inline-block overflow-hidden py-1;
+  }
 </style>

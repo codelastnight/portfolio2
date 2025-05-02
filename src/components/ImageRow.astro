@@ -53,13 +53,12 @@ const fallback = (a: number | undefined) => a || 0;
   }
 </div>
 
-<style lang="postcss">
+<style>
   @reference '@/global.css';
 
-  .img-preview img{
+  .img-preview img {
     --img-preview-width: 100%;
-    height: auto; 
+    height: auto;
     @apply w-full md:w-[var(--img-preview-width)];
   }
-  
 </style>

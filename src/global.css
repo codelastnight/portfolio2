@@ -21,8 +21,7 @@
   }
 
   .page-margins {
-    paddingleft: var(--spacing-4);
-    paddingright: var(--spacing-4);
+    @apply px-4;
   }
 }
 

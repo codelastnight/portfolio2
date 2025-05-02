@@ -65,7 +65,7 @@ const credits = entry.data.credits ? entry.data.credits : null;
   <PostFooter collection="work" postList={allPosts} currentId={entry.id} />
 </Layout>
 
-<style lang="postcss" is:global>
+<style is:global>
   @reference '@/global.css';
 
   .paragraph-text {
@@ -73,14 +73,13 @@ const credits = entry.data.credits ? entry.data.credits : null;
   }
   .paragraph-image {
     @apply mx-auto max-w-6xl mt-20 mb-20;
-
   }
   .paragraph-image img {
     @apply mx-auto;
   }
   .prose h1 {
-    @apply text-center ;
- }
+    @apply text-center;
+  }
   .prose h1 {
     @apply text-4xl md:text-7xl mb-4 mt-12 py-3 px-6 max-w-xl;
   }
@@ -94,7 +93,7 @@ const credits = entry.data.credits ? entry.data.credits : null;
     @apply text-2xl mb-4;
   }
   blockquote {
-    @apply pr-8 pl-12  mx-auto max-w-3xl pb-3 pt-7 bg-gray-100 border-2 border-gray-400; 
+    @apply pr-8 pl-12  mx-auto max-w-3xl pb-3 pt-7 bg-gray-100 border-2 border-gray-400;
   }
   .prose img {
     @apply my-3 border border-theme-dark;
@@ -108,4 +107,4 @@ const credits = entry.data.credits ? entry.data.credits : null;
   .prose .gridlayout p {
     @apply mx-0 w-full h-full border-2 border-theme-dark px-2 py-1 md:px-4 md:py-3 border-dashed;
   }
-  </style>
+</style>
