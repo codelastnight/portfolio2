@@ -30,7 +30,7 @@ import signal from "./signal.svg?raw";
   document.addEventListener("astro:page-load", addContactHandler);
 </script>
 
-<dialog id="contact-form" class="max-w-lg w-full">
+<dialog id="contact-form" class="max-w-lg w-full mx-auto mt-[24svh]">
   <div class="phone">
     <header class="flex justify-between items-center px-2 py-1">
       <Fragment set:html={signal} />
@@ -40,23 +40,33 @@ import signal from "./signal.svg?raw";
 
     <div class="content">
       <div class="hero">
-        <h1 class="text-2xl md:text-4xl">
+        <h1 class="text-2xl md:text-4xl text-center">
           Simon Zhang is available in the following addresses:
         </h1>
       </div>
       <div></div>
       <div>
-        <form method="dialog">
+        <form class="text-center" method="dialog">
           <h2 id="email-address" class="text-xl lg:text-4xl"></h2>
-          <h2>also find me on:</h2>
+          <h2>also on:</h2>
           <h2>
-            <a href="linkedin.com/in/simonzhangpacific/" target="_blank"
-              >linkedin</a
-            > and <a href="https://www.behance.net/artlastnight" target="_blank"
-              >behance</a
+            <a
+              class="phone-link"
+              href="linkedin.com/in/simonzhangpacific/"
+              target="_blank"
             >
+              linkedin
+            </a>
+            and
+            <a
+              class="phone-link"
+              href="https://www.instagram.com/digital.yesterday/"
+              target="_blank"
+            >
+              instagram
+            </a>
           </h2>
-          <menu class="mt-6">
+          <menu class="mt-6 flex justify-between">
             <ShinyButton
               type="submit"
               color="#333333"
@@ -67,6 +77,17 @@ import signal from "./signal.svg?raw";
             >
               <p class="text-white">Cancel</p>
             </ShinyButton>
+
+            <ShinyButton
+              type="submit"
+              color="green"
+              value="cancel"
+              width="10rem"
+              height="3rem"
+              radius="0.5rem"
+            >
+              <p class="text-white">oh ok awesome</p>
+            </ShinyButton>
           </menu>
         </form>
       </div>
@@ -76,9 +97,13 @@ import signal from "./signal.svg?raw";
 
 <style>
   @reference '@/global.css';
+
+  .phone-link {
+    @apply text-lg bg-transparent text-blue-600 hover:text-blue-600 hover:bg-blue-100;
+  }
+
   .wrapper {
-    padding: var(--f1);
-    max-width: 40rem;
+    @apply p-1;
     width: 100%;
     margin: 0 auto;
     position: relative;

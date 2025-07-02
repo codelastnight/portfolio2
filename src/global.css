@@ -27,8 +27,7 @@
 
 @font-face {
   font-family: "Neue Montreal";
-  src: local("PP Neue Montreal"), local("Neue Montreal"),
-    url("/assets/PPNeueMontreal-Medium.woff2");
+  src: url("/assets/PPNeueMontreal-Medium.woff2");
   font-display: swap;
 }
 :root {

@@ -1,13 +1,15 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { getFirst } from "./helper";
 
 interface Props {
   currentId: string;
   collection: string;
   postList: CollectionEntry<"work">[] | CollectionEntry<"play">[];
+  class?: string;
 }
 
-const { collection, postList, currentId } = Astro.props;
+const { collection, postList, currentId, class: classList = "" } = Astro.props;
 
 const linkId = collection === "play" ? "after-hours" : collection;
 
@@ -16,7 +18,7 @@ function setColors(fg: string, bg: string) {
 }
 ---
 
-<footer class="mt-8">
+<footer class={`mt-8 grid grid-cols-2 md:grid-cols-3 ${classList}`}>
   {
     postList.map((post) =>
       post.id !== currentId ? (
@@ -25,11 +27,14 @@ function setColors(fg: string, bg: string) {
           href={`/${linkId}/${post.id}`}
           style={setColors(post.data.colors.fg, post.data.colors.bg)}
         >
-          <p>{post.data.title}</p>
+          <h2 class="pb-2">{post.data.title}</h2>
+          {getFirst(post.data.heroImages, (img) => (
+            <img src={img[1].src} class="w-full aspect-square object-cover" />
+          ))}
         </a>
       ) : (
         <p class="directory active page-margins flex items-center">
-          <span class="text-2xl md:text-3xl border-2 border-theme-dark rounded-full px-3">
+          <span class="text-xl md:text-3xl border-2 border-theme-dark rounded-full px-3">
             You Are Here:
           </span>{" "}
           <span>{post.data.title}</span>
@@ -42,8 +47,8 @@ function setColors(fg: string, bg: string) {
   @reference '@/global.css';
 
   .directory {
-    @apply py-12  border-theme-dark block;
-    @apply text-3xl md:text-5xl;
+    @apply py-5 border-theme-dark block leading-tight;
+    @apply text-lg md:text-2xl text-center;
   }
   .directory.active {
     @apply py-8 my-1 border-2 border-dashed;

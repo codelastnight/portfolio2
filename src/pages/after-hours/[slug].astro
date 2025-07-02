@@ -74,7 +74,12 @@ const credits = entry.data.credits ? entry.data.credits : null;
     </section>
   </article>
 
-  <PostFooter collection="play" postList={allPosts} currentId={entry.id} />
+  <PostFooter
+    collection="play"
+    class="lg:grid-cols-4"
+    postList={allPosts}
+    currentId={entry.id}
+  />
 </Layout>
 
 <style is:global>
