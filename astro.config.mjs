@@ -5,13 +5,15 @@ import tailwindcss from "@tailwindcss/vite";
 
 import { selectAll } from 'unist-util-select';
 
+import react from '@astrojs/react';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://simonzhang.design',
   // image: {
   //   service: passthroughImageService(),
   // },
-  integrations: [mdx()],
+  integrations: [mdx(),react(),],
   markdown: {
     // Applied to .md and .mdx files
     remarkPlugins: [myRemarkPlugin],

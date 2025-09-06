@@ -33,12 +33,14 @@ function setColors(fg: string, bg: string) {
           ))}
         </a>
       ) : (
-        <p class="directory active page-margins flex items-center">
-          <span class="text-xl md:text-3xl border-2 border-theme-dark rounded-full px-3">
-            You Are Here:
-          </span>{" "}
-          <span>{post.data.title}</span>
-        </p>
+        <div class="directory active page-margins items-center-safe">
+          <h2>{post.data.title}</h2>
+          <div class="flex-1 flex place-items-center">
+            <p class="text-xl  flex w-fit md:text-xl border-2 border-theme-dark rounded-full px-3">
+              You Are Here
+            </p>
+          </div>
+        </div>
       )
     )
   }
@@ -47,10 +49,10 @@ function setColors(fg: string, bg: string) {
   @reference '@/global.css';
 
   .directory {
-    @apply py-5 border-theme-dark block leading-tight;
+    @apply py-5 border-theme-dark flex flex-col leading-tight;
     @apply text-lg md:text-2xl text-center;
   }
   .directory.active {
-    @apply py-8 my-1 border-2 border-dashed;
+    @apply border-2 border-dashed;
   }
 </style>
